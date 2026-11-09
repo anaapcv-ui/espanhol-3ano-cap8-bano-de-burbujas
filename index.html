@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baño de Burbujas — Espanhol 3º ano (Cap. 8)</title>
+<style>
+:root{
+  --pau:#8E6CD9; --pau2:#6A4BB3; --mata:#1E9BD7; --mata2:#1577A8;
+  --ouro:#FFC83D; --ouro2:#C99300; --aq:#2DBE8C; --aq2:#1F8F68;
+  --acervo:#F2FAFF; --tinta:#253040; --cinza:#7d8794; --linha:#d3e9f6;
+  --ok:#1fa45b; --erro:#e5484d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Trebuchet MS","Segoe UI",Verdana,sans-serif;background:var(--acervo);color:var(--tinta);font-size:19px;line-height:1.55}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+.frontao{height:24px;background:radial-gradient(circle at 12px 12px,#ffffff 0 7px,#bfe6fb 8px 9px,transparent 10px) 0 0/30px 24px,radial-gradient(circle at 6px 6px,#ffffff 0 3px,#d9c9f5 4px,transparent 5px) 15px 12px/30px 24px,#e6f5fd;border-top:3px solid var(--mata);border-bottom:3px solid var(--mata)}
+header.topo{background:linear-gradient(180deg,#dff1fc,#f2faff);text-align:center;padding:14px 12px 10px}
+header.topo h1{margin:4px 0;font-size:1.8em;color:var(--pau2);letter-spacing:.5px}
+header.topo p{margin:2px 0;color:#5f5b66;font-size:.92em}
+.colunas{font-size:2.2em;letter-spacing:6px}
+.capi{display:inline-block;animation:pula 2.8s ease-in-out infinite}
+@keyframes pula{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+nav.abas{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 2px 8px #0001;display:flex;gap:6px;overflow-x:auto;padding:8px}
+nav.abas button{flex:0 0 auto;border:2px solid var(--linha);background:#fff;border-radius:14px;padding:8px 12px;font-weight:bold;color:var(--tinta);position:relative}
+nav.abas button.ativa{background:var(--mata);border-color:var(--mata2);color:#fff}
+nav.abas button.trancada{background:#eee;color:#999;border-color:#ddd}
+nav.abas button .selo{position:absolute;top:-8px;right:-6px;background:var(--ouro);color:#4a3200;border-radius:10px;font-size:.62em;padding:1px 6px}
+main{max-width:880px;margin:0 auto;padding:14px 12px 80px}
+section.aba{display:none}
+section.aba.ativa{display:block;animation:entra .35s ease}
+@keyframes entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card{background:#fff;border-radius:18px;padding:16px 18px;margin:14px 0;box-shadow:0 3px 0 var(--linha),0 4px 14px #0000000d;border:2px solid var(--linha)}
+h2{color:var(--mata2);margin:.2em 0 .4em}
+h3{margin:.5em 0 .3em}
+.sub{color:var(--cinza);font-size:.88em}
+.btn{border:none;border-radius:14px;padding:10px 16px;font-weight:bold;color:#fff;background:var(--mata);box-shadow:0 3px 0 var(--mata2);margin:4px 2px}
+.btn:disabled{background:#c9c4cc;box-shadow:0 3px 0 #a9a3ad;cursor:not-allowed}
+.btn.azul{background:var(--aq);box-shadow:0 3px 0 var(--aq2)}
+.btn.loco{background:var(--pau);box-shadow:0 3px 0 var(--pau2)}
+.btn.claro{background:#fff;color:var(--tinta);border:2px solid var(--linha);box-shadow:none}
+.trilha{display:grid;gap:10px}
+.etapa{display:flex;gap:12px;align-items:center;border-radius:16px;padding:12px 14px;border:2px solid var(--linha);background:#fff;text-align:left;width:100%;color:var(--tinta)}
+.etapa .ic{font-size:1.8em}
+.etapa.trancada{background:#f1f0f2;color:#8d8892;filter:grayscale(1)}
+.etapa.feita{border-color:var(--ok)}
+.etapa.nova{animation:brilho 1.4s ease 3;border-color:var(--ouro)}
+@keyframes brilho{0%,100%{box-shadow:0 0 0 0 #e8a31700}50%{box-shadow:0 0 0 8px #e8a31788}}
+.tag{display:inline-block;border-radius:10px;padding:1px 8px;font-size:.75em;font-weight:bold;margin-left:4px}
+.tag.ok{background:#dff5e8;color:var(--ok)}
+.tag.novo{background:#fff1c2;color:#7a5600}
+.tag.lock{background:#e7e5ea;color:#6b6670}
+.barra{height:14px;background:#eee;border-radius:10px;overflow:hidden;margin:6px 0}
+.barra>div{height:100%;background:linear-gradient(90deg,var(--mata),var(--ouro));width:0;transition:width .4s}
+.ala-tit{margin:22px 0 4px;padding:10px 14px;border-radius:14px;color:#fff;font-weight:bold;font-size:1.1em;text-align:center}
+.ala-tit.acoes{background:linear-gradient(90deg,var(--mata),var(--pau))}
+.ala-tit.campanha{background:linear-gradient(90deg,var(--aq),#4fd1a8)}
+.ala-tit.verbos{background:linear-gradient(90deg,#E35D9B,var(--pau))}
+.ala-tit.final{background:linear-gradient(90deg,var(--mata),var(--ouro))}
+.bloco{border-left:10px solid var(--c,var(--mata))}
+.bloco.fechado .corpo{display:none}
+.bloco .cab{display:flex;justify-content:space-between;align-items:center;gap:8px;cursor:pointer}
+.bloco.trancado{opacity:.55}
+.bilhete{display:inline-block;background:#fff4c9;border:2px dashed var(--ouro2);border-radius:8px;padding:0 8px;font-size:.75em;font-weight:bold;color:#7a5600;transform:rotate(-4deg)}
+.caixa{background:#fff8e3;border:2px dashed var(--ouro);border-radius:12px;padding:8px 12px;margin:10px 0;font-size:.93em}
+.regra{background:#eef9f3;border:2px solid #bfe9d2;border-radius:12px;padding:8px 12px;margin:8px 0}
+.regra.azulado{background:#eef5fc;border-color:#c8def3}
+.duas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px}
+.degraus{display:grid;gap:6px;margin:8px 0}
+.degraus>div{background:#fff7ec;border-left:6px solid var(--ouro);border-radius:10px;padding:6px 10px}
+.fluxo{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0}
+.fluxo>div{flex:1 1 180px;background:#fff7e1;border:2px solid #f1d38a;border-radius:12px;padding:8px 10px;font-size:.93em}
+.fluxo>span{font-size:1.3em}
+.etapas{background:#fdf0e8;border:2px solid #efc7ad;border-radius:12px;padding:8px 12px;margin:8px 0}
+.etapas ol{margin:4px 0 0 0;padding-left:22px}
+.narrador{background:#eef4ff;border-left:5px solid var(--aq);border-radius:10px;padding:8px 12px;margin:8px 0;font-style:italic}
+.pergunta{margin:14px 0 6px;padding-top:10px;border-top:2px dotted var(--linha)}
+.opcoes{display:grid;gap:6px}
+.op{text-align:left;border:2px solid var(--linha);background:#fff;border-radius:12px;padding:8px 12px;color:var(--tinta)}
+.op:hover:not(:disabled){border-color:var(--aq)}
+.op.certa{background:#e3f7ea;border-color:var(--ok);font-weight:bold}
+.op.errada{background:#fde6e4;border-color:var(--erro)}
+.op.cinza{background:#f2f1f3;color:#777}
+.op.sel{background:#e6efff;border-color:var(--aq);font-weight:bold}
+.op:disabled{cursor:default}
+.fb{border-radius:12px;padding:8px 12px;margin-top:6px;font-size:.93em;animation:entra .3s}
+.fb.ok{background:#e3f7ea}
+.fb.no{background:#fff0e0}
+.estrelas{font-size:1.2em}
+table.mini{border-collapse:collapse;margin:6px 0;font-size:.92em;width:100%}
+table.mini td,table.mini th{border:2px solid #ead9bd;padding:4px 8px;text-align:left}
+table.mini th{background:#fbefd9}
+/* mapa */
+.mapa .centro{background:var(--pau);color:#fff;text-align:center;border-radius:50px;padding:14px;font-weight:bold;font-size:1.15em;margin:6px auto 14px;max-width:460px;box-shadow:0 4px 0 var(--pau2)}
+.ramos{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.ramo{border-radius:16px;padding:10px 12px;background:#fff;border:3px solid var(--c);transition:filter .6s}
+.ramo h4{margin:0 0 6px;color:var(--c);font-size:1.05em}
+.mapa.incompleto .ramo{filter:saturate(.25)}
+.mapa.completo .ramo{animation:revela .8s ease}
+@keyframes revela{from{transform:scale(.96)}to{transform:none}}
+.no{margin:7px 0;font-size:.96em}
+.lacuna{display:inline-flex;gap:4px;vertical-align:middle;flex-wrap:wrap}
+.lacuna button{border:2px dashed var(--aq);background:#eef4ff;border-radius:10px;padding:2px 10px;font-weight:bold;color:var(--aq2)}
+.lacuna.feita span{display:inline-block;background:#e3f7ea;border:2px solid var(--ok);border-radius:10px;padding:2px 10px;font-weight:bold;color:var(--ok)}
+.lacuna button.erro{border-color:var(--erro);background:#fde6e4;color:var(--erro);animation:balanca .45s}
+@keyframes balanca{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.contador{position:sticky;top:58px;z-index:5;background:var(--aq);color:#fff;border-radius:14px;padding:8px 12px;text-align:center;font-weight:bold;margin:8px 0}
+/* vf */
+.vf-frase{font-size:1.2em;font-weight:bold;text-align:center;margin:14px 0;min-height:3em}
+.vf-bts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.vf-bts .btn{font-size:1.1em;padding:12px 22px}
+/* resumo */
+.linha-tempo{display:grid;gap:8px;position:relative;padding-left:22px}
+.linha-tempo:before{content:"";position:absolute;left:8px;top:4px;bottom:4px;width:6px;border-radius:4px;background:repeating-linear-gradient(180deg,var(--mata) 0 12px,var(--pau) 12px 24px)}
+.parada{display:flex;gap:10px;align-items:center;background:#fff;border:2px solid var(--linha);border-radius:14px;padding:6px 10px}
+.parada .ano{font-weight:bold;color:var(--pau2);min-width:88px}
+.parada .ic{font-size:1.4em}
+.grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.palavra{background:#fff;border:2px solid var(--linha);border-radius:12px;padding:8px 10px;font-size:.93em}
+.palavra b{color:var(--mata2)}
+.postits{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.postit{background:#fff59a;padding:12px;border-radius:4px;box-shadow:2px 3px 6px #0002;transform:rotate(-1deg);font-size:.95em}
+.postit:nth-child(even){transform:rotate(1.2deg);background:#ffe0ef}
+.relampago button{width:100%;text-align:left}
+.resp-oculta{display:none;margin:4px 0 8px 10px;color:var(--mata2);font-weight:bold}
+/* modal */
+.fundo-modal{position:fixed;inset:0;background:#2b2a33cc;display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
+.fundo-modal.aberto{display:flex}
+.modal{background:#fff;border-radius:20px;max-width:440px;width:100%;padding:20px;text-align:center;animation:entra .3s}
+.painel-salvar{font-size:.85em;color:var(--cinza)}
+input.codigo{font-size:1em;padding:8px 10px;border-radius:12px;border:2px solid var(--linha);width:170px;text-transform:uppercase}
+table.rel{width:100%;border-collapse:collapse;font-size:.88em}
+table.rel td,table.rel th{border-bottom:1px solid #eee;padding:5px;text-align:left;vertical-align:top}
+.gab-q{border-top:2px dotted var(--linha);padding-top:8px;margin-top:10px}
+.gab-op{border-radius:10px;padding:5px 10px;margin:4px 0;font-size:.92em}
+.gab-op.certa{background:#e3f7ea;border:2px solid var(--ok)}
+.gab-op.cinza{background:#f2f1f3;color:#666}
+.gab-op.marcada{outline:3px solid var(--aq)}
+.placar-final{text-align:center;font-size:1.3em}
+.trofeu{font-size:3em}
+footer{text-align:center;color:var(--cinza);font-size:.85em;padding:20px}
+@media (max-width:520px){body{font-size:17px}header.topo h1{font-size:1.4em}}
+
+/* ---- idioma: vocabulário fixo + áudio ---- */
+.vocs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:10px 0}
+.voc{display:block;background:#fff;border:2px solid var(--linha);border-radius:14px;padding:8px 10px;text-align:center}
+.voc .vic{display:block;font-size:1.6em}
+.voc b{font-size:1.1em;color:var(--pau2)}
+.voc .vpt{display:block;color:#5f5b66;font-size:.88em}
+button.som{border:none;background:#e3f2fc;border-radius:50%;width:34px;height:34px;padding:0;font-size:.85em;vertical-align:middle;margin-left:2px}
+button.som:active{transform:scale(.92)}
+.fen{display:inline-block;font-weight:bold;color:var(--aq2)}
+.parada .ano{min-width:150px}
+.mapa.incompleto .ramos{filter:blur(.3px)}
+.mapa .centro{background:linear-gradient(90deg,var(--mata),var(--pau))}
+</style>
+</head>
+<body>
+<div class="frontao"></div>
+<header class="topo">
+  <div class="colunas">🧼<span class="capi">🫧</span>🚿</div>
+  <h1>Baño de Burbujas</h1>
+  <p><b>Espanhol · 3º ano</b> · Prova: sexta-feira, 13/11</p>
+  <p>Capítulo 8 – <i>Higiene y cuidados personales</i></p>
+</header>
+<div class="frontao"></div>
+<nav class="abas" id="abas"></nav>
+<main>
+
+<!-- ============ INÍCIO ============ -->
+<section class="aba" id="sec-inicio">
+  <div class="card">
+    <h2>👋 ¡Hola, jovem aprendiz!</h2>
+    <p>Eu sou a <b>Pompita</b>, uma bolhinha de sabão 🫧, e este é o <b>Baño de Burbujas</b>. Aqui você vai estourar <b>8 bolhas</b> (as <i>burbujas</i>) sobre higiene em espanhol: as ações de cuidar do corpo, os objetos do banheiro, uma campanha de saúde e os verbos com <b>ME</b>. A cada bolha feita, você ganha um <span class="bilhete">🫧 selo limpinho</span>. Aperte o <b>🔊</b> para ouvir as palavras em espanhol!</p>
+  </div>
+  <div class="card">
+    <h2>📋 O que vai cair na prova</h2>
+    <ul>
+      <li>🚿 <b>Capítulo 8 – Higiene y cuidados personales</b> (p. 68 e 70): ducharse, secarse, peinarse, cepillarse los dientes, lavarse las manos, vestirse · los objetos: la toalla, el peine, el cepillo de dientes, el grifo.</li>
+      <li>🪞 <b>Verbos</b> (p. 73): ducharse → me ducho · secarse → me seco · vestirse → me visto · peinarse → me peino · lavarse → me lavo · cepillarse → me cepillo (historieta e relato da Carmen).</li>
+      <li>🫧 De bônus, a <b>p. 69</b> (cartaz do Día mundial del lavado de manos), que veio nas fotos e é do mesmo capítulo.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>🛤️ Seu caminho no Baño de Burbujas</h2>
+    <p class="sub">Os materiais abrem um por vez, na ordem. Conclua um para destravar o próximo.</p>
+    <div class="trilha" id="trilhaCards"></div>
+  </div>
+  <div class="card">
+    <h2>🧭 Como usar</h2>
+    <ol>
+      <li>Os materiais abrem <b>um por vez, na ordem</b>. Conclua um para destravar o próximo.</li>
+      <li>Leia cada bolha com calma e ouça as palavras no <b>🔊</b> antes de responder.</li>
+      <li>Errou? Tudo bem! Leia a explicação e siga em frente. Errar aqui é treino.</li>
+      <li>Depois de terminar tudo, os materiais ficam abertos para revisar quantas vezes quiser.</li>
+    </ol>
+    <p class="sub">🔊 O áudio funciona melhor no Chrome ou no Safari (celular ou computador).</p>
+  </div>
+  <div class="card">
+    <h2>💾 Seu progresso</h2>
+    <p class="painel-salvar" id="painelSalvar">Seu progresso é salvo sozinho neste aparelho.</p>
+    <button class="btn claro" id="btExportar">📥 Exportar</button>
+    <button class="btn claro" id="btImportar">📤 Importar</button>
+    <button class="btn claro" id="btZerar">🗑️ Zerar tudo</button>
+    <input type="file" id="arqImportar" accept=".json,application/json" style="display:none">
+  </div>
+  <div class="card">
+    <h2>📊 Relatório para os pais</h2>
+    <p class="sub">Digite o código do Simulado (SIM-…) ou o código da família.</p>
+    <input class="codigo" id="codPais" placeholder="Código" autocomplete="off">
+    <button class="btn azul" id="btRelatorio">Abrir</button>
+    <div id="areaPais"></div>
+    <p class="sub" style="margin-top:10px">💡 <b>Dica para os pais:</b> o progresso fica no navegador deste aparelho. Se trocar de aparelho, use 📥 Exportar / 📤 Importar ou libere a trilha com o código da família.</p>
+  </div>
+</section>
+
+<!-- ============ LEITURA GUIADA ============ -->
+<section class="aba" id="sec-leitura">
+  <div class="card">
+    <h2>📖 Leitura Guiada: as bolhas da Pompita</h2>
+    <p>Leia cada bolha e responda às <b>3 perguntas</b> do fim. A próxima bolha abre quando você responder às 3. Clique no título de uma bolha para fechar ou abrir.</p>
+    <div class="barra"><div id="barraLeitura"></div></div>
+    <p class="sub" id="txtLeitura"></p>
+  </div>
+  <div id="blocosLeitura"></div>
+  <div class="card" id="fimLeitura">
+    <h2>⚠️ Pegadinhas do Baño de Burbujas</h2>
+    <ol>
+      <li>As 6 ações terminam em <b>-RSE</b>: vesti<b>rse</b>, ducha<b>rse</b>, peina<b>rse</b>, seca<b>rse</b> (nunca "-rne" nem "-rte").</li>
+      <li>A campanha da p. 69 é do <b>lavado de manos</b> → medida: <b>lavarse las manos</b> (e não ducharse).</li>
+      <li><b>vestirse</b> → <b>me VISTO</b>, com i (e não "me vesto").</li>
+      <li>Quando EU faço, a palavra termina em <b>-o</b>: me duch<b>o</b>, me sec<b>o</b>, me pein<b>o</b>, me lav<b>o</b>, me cepill<b>o</b>.</li>
+      <li><b>la toalla</b> → secarse · <b>el peine</b> → peinarse · <b>el cepillo de dientes</b> → cepillarse los dientes · <b>el grifo</b> → lavarse las manos.</li>
+      <li>Escreva a ação inteira, com <b>-se</b>: cepillar<b>se</b> los dientes, lavar<b>se</b> las manos.</li>
+      <li><b>antes de comer</b> → me lavo las manos · <b>después de comer</b> → me cepillo los dientes.</li>
+      <li>Carmen, ao sair do chuveiro: <b>primero</b> me seco, <b>enseguida</b> me visto (nessa ordem!).</li>
+      <li><b>el pelo</b> = o <b>cabelo</b> ("el pelo limpio y peinado").</li>
+      <li>Data do cartaz: <b>15 de octubre</b>, Día mundial del lavado de manos.</li>
+    </ol>
+    <h3>🗂️ Onde está cada assunto</h3>
+    <table class="rel">
+      <tr><th>Assunto da prova</th><th>Bolha</th></tr>
+      <tr><td>As 6 ações de higiene (p. 68)</td><td>1 · As 6 ações de higiene</td></tr>
+      <tr><td>Objetos: toalla, peine, cepillo de dientes, grifo (p. 70, atividade 2)</td><td>2 · Para que serve cada objeto?</td></tr>
+      <tr><td>Ordenar as letras: vestirse, ducharse, peinarse, secarse (p. 70, atividade 1)</td><td>3 · Letras embaralhadas</td></tr>
+      <tr><td>Campanha do Día mundial del lavado de manos (p. 69 — bônus)</td><td>4 · A campanha de saúde</td></tr>
+      <tr><td>Verbos — historieta: me lavo / me cepillo (p. 73, atividade 2)</td><td>5 · A historieta do lanche</td></tr>
+      <tr><td>Verbos — tabela: -se → me … -o (p. 73, atividade 3)</td><td>6 · Verbos: do -SE para o ME</td></tr>
+      <tr><td>Verbos — relato da Carmen (p. 73, atividade 3)</td><td>7 · O relato da Carmen</td></tr>
+      <tr><td>Tudo misturado</td><td>8 · Revisão geral</td></tr>
+    </table>
+  </div>
+  <div class="card" style="text-align:center">
+    <button class="btn loco" data-proximo="mapa">🧠 Próximo: Mapa Mental para encaixar</button>
+  </div>
+</section>
+
+<!-- ============ MAPA MENTAL ============ -->
+<section class="aba" id="sec-mapa">
+  <div class="card">
+    <h2>🧠 Mapa Mental para encaixar: o Espelho Embaçado</h2>
+    <p>O vapor do banho embaçou o espelho e o mapa ficou com <b>peças faltando</b>. Em cada buraco, clique na palavra certa. Acertou? A peça fica verde e o espelho desembaça um pouquinho. Errou? Ela balança e você tenta de novo.</p>
+  </div>
+  <div class="contador" id="contadorMapa">🧩 Mapa: 0 peças encaixadas</div>
+  <div class="mapa incompleto" id="mapa">
+    <div class="centro">🫧 Capítulo 8 · Higiene y cuidados personales<br><span style="font-weight:normal;font-size:.85em">ações · objetos · campanha · verbos com ME</span></div>
+    <div class="ramos" id="ramosMapa"></div>
+  </div>
+  <div class="card" id="mapaFim" style="display:none;text-align:center">
+    <div class="trofeu">🧠</div>
+    <h2>Mapa completo!</h2>
+    <p>Foi você que desembaçou o espelho e montou esse mapa. Agora ele está inteiro e colorido!</p>
+  </div>
+  <div class="card" style="text-align:center">
+    <button class="btn loco" data-proximo="vf">✅ Próximo: Verdadeiro ou Falso</button>
+  </div>
+</section>
+
+<!-- ============ VERDADEIRO OU FALSO ============ -->
+<section class="aba" id="sec-vf">
+  <div class="card" id="vfJogo"></div>
+  <div class="card" style="text-align:center">
+    <button class="btn loco" data-proximo="resumo">🗺️ Próximo: Resumo</button>
+  </div>
+</section>
+
+<!-- ============ RESUMO ============ -->
+<section class="aba" id="sec-resumo">
+  <div class="card">
+    <h2>🗺️ Nécessaire da Pompita (Resumo)</h2>
+    <p>Tudo o que cai na prova numa página só. Aperte o 🔊 para ouvir. Leia até o fim: lá embaixo tem um botão para marcar que você terminou.</p>
+  </div>
+
+  <div class="card">
+    <h2>⏰ Quando? → O que fazer</h2>
+    <p class="sub">Os momentos de higiene que aparecem no relato da Carmen e na historieta (p. 73).</p>
+    <div class="linha-tempo" id="linhaTempo"></div>
+  </div>
+
+  <div class="card">
+    <h2>🪞 Do -SE para o ME (tabela da p. 73)</h2>
+    <table class="mini"><tr><th>A ação</th><th>Eu faço</th></tr>
+      <tr><td>ducharse <button class="som" data-fala="ducharse">🔊</button></td><td>me ducho <button class="som" data-fala="me ducho">🔊</button></td></tr>
+      <tr><td>secarse <button class="som" data-fala="secarse">🔊</button></td><td>me seco <button class="som" data-fala="me seco">🔊</button></td></tr>
+      <tr><td>vestirse <button class="som" data-fala="vestirse">🔊</button></td><td><b>me visto</b> (com i!) <button class="som" data-fala="me visto">🔊</button></td></tr>
+      <tr><td>peinarse <button class="som" data-fala="peinarse">🔊</button></td><td>me peino <button class="som" data-fala="me peino">🔊</button></td></tr>
+      <tr><td>lavarse <button class="som" data-fala="lavarse">🔊</button></td><td>me lavo <button class="som" data-fala="me lavo">🔊</button></td></tr>
+      <tr><td>cepillarse <button class="som" data-fala="cepillarse">🔊</button></td><td>me cepillo <button class="som" data-fala="me cepillo">🔊</button></td></tr>
+    </table>
+    <div class="regra">🔁 O -se sai, o <b>me</b> vai para a frente e a palavra termina em <b>-o</b>.</div>
+  </div>
+
+  <div class="card">
+    <h2>🧴 Objeto → para que se usa (p. 70)</h2>
+    <div class="duas">
+      <div class="regra">🧖 Se usa <b>la toalla</b> para <b>secarse</b>. <button class="som" data-fala="Se usa la toalla para secarse.">🔊</button></div>
+      <div class="regra azulado">💇 Se usa <b>el peine</b> para <b>peinarse</b>. <button class="som" data-fala="Se usa el peine para peinarse.">🔊</button></div>
+      <div class="regra">🪥 Se usa <b>el cepillo de dientes</b> para <b>cepillarse los dientes</b>. <button class="som" data-fala="Se usa el cepillo de dientes para cepillarse los dientes.">🔊</button></div>
+      <div class="regra azulado">🚰 Se usa <b>el grifo</b> para <b>lavarse las manos</b>. <button class="som" data-fala="Se usa el grifo para lavarse las manos.">🔊</button></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🔤 Palavras importantes</h2>
+    <div class="vocs" id="gradeVocab"></div>
+  </div>
+
+  <div class="card">
+    <h2>🫧 A campanha da p. 69</h2>
+    <div class="regra">📢 "Estar limpios y sanos está en nuestras manos." <button class="som" data-fala="Estar limpios y sanos está en nuestras manos.">🔊</button><br>📅 <b>15 de octubre</b> · Día mundial del lavado de manos <button class="som" data-fala="Día mundial del lavado de manos">🔊</button><br>✅ Medida de higiene que a campanha incentiva: <b>lavarse las manos</b>.</div>
+  </div>
+
+  <div class="card">
+    <h2>📌 Dicas de prova</h2>
+    <div class="postits">
+      <div class="postit">Final <b>-RSE</b> sempre: vesti<b>rse</b>, ducha<b>rse</b>, peina<b>rse</b>, seca<b>rse</b>. (No livro saiu "-rne"/"-rte". Treine!)</div>
+      <div class="postit">Campanha da p. 69 = <b>lavarse las manos</b>. (No livro foi marcado o chuveiro. Cuidado!)</div>
+      <div class="postit">Escreva com <b>-se</b>: cepillar<b>se</b> los dientes, lavar<b>se</b> las manos.</div>
+      <div class="postit"><b>vestirse → me visto</b> (com i).</div>
+      <div class="postit">Desembaralhar: tire <b>R·S·E</b> primeiro e arrume o que sobrou.</div>
+      <div class="postit">Ao sair do chuveiro: <b>primero me seco</b>, <b>enseguida me visto</b>.</div>
+    </div>
+  </div>
+
+  <div class="card relampago">
+    <h2>⚡ Mini-quiz relâmpago</h2>
+    <p class="sub">Pense na resposta e clique para conferir.</p>
+    <div id="relampago"></div>
+  </div>
+
+  <div class="card" style="text-align:center" id="fimResumo">
+    <p>Chegou até aqui? Então marque:</p>
+    <button class="btn" id="btLiResumo" disabled>✅ Li o resumo até o fim</button>
+    <p class="sub" id="txtLiResumo">O botão acende quando você chegar ao fim da página.</p>
+    <button class="btn loco" data-proximo="simulado">📝 Pronto para o Simulado!</button>
+  </div>
+</section>
+
+<!-- ============ SIMULADO ============ -->
+<section class="aba" id="sec-simulado">
+  <div class="card">
+    <h2>📝 El Gran Baño (Simulado)</h2>
+    <p><b>25 questões</b>. Leia com atenção, marque uma alternativa em cada questão e clique em <b>Enviar</b> no final. Depois aparecem sua nota, seu código e o gabarito comentado (com 🔊).</p>
+    <div class="barra"><div id="barraSim"></div></div>
+    <p class="sub" id="txtSim"></p>
+  </div>
+  <div id="questoesSim"></div>
+  <div class="card" style="text-align:center" id="envioSim">
+    <button class="btn loco" id="btEnviarSim">📨 Enviar Simulado</button>
+  </div>
+  <div id="resultadoSim"></div>
+</section>
+
+</main>
+<footer>🫧 Baño de Burbujas · Espanhol 3º ano · Capítulo 8 "Higiene y cuidados personales" · conteúdo das páginas 68, 69, 70 e 73 do livro</footer>
+
+<div class="fundo-modal" id="fundoModal"><div class="modal" id="modal"></div></div>
+
+<script>
+// ===================== DADOS (fonte ÚNICA: fotos do livro enviadas pela Ana — Espanhol 3º ano, Cap. 8 "Higiene y cuidados personales": pp. 68, 69, 70 e 73) =====================
+const W = (es, pt, ic) => `<span class="voc">${ic?`<span class="vic">${ic}</span>`:''}<b>${es}</b> <button class="som" data-fala="${es}" title="ouvir">🔊</button><span class="vpt">${pt}</span></span>`;
+const F = es => `<span class="fen">${es} <button class="som" data-fala="${es.replace(/<[^>]+>/g,'')}" title="ouvir">🔊</button></span>`;
+const TABELA_VERBOS = `<table class="mini"><tr><th>A ação (termina em -SE)</th><th>Eu faço (começa com ME)</th><th>Em português</th></tr>
+<tr><td>${F('ducharse')}</td><td>${F('me ducho')}</td><td>eu tomo banho de chuveiro</td></tr>
+<tr><td>${F('secarse')}</td><td>${F('me seco')}</td><td>eu me seco</td></tr>
+<tr><td>${F('vestirse')}</td><td>${F('me visto')}</td><td>eu me visto</td></tr>
+<tr><td>${F('peinarse')}</td><td>${F('me peino')}</td><td>eu me penteio</td></tr>
+<tr><td>${F('lavarse')}</td><td>${F('me lavo')}</td><td>eu me lavo / eu lavo (as mãos)</td></tr>
+<tr><td>${F('cepillarse')}</td><td>${F('me cepillo')}</td><td>eu escovo (os dentes)</td></tr></table>`;
+
+const BLOCOS = [
+{ id:'b1', emoji:'🚿', titulo:'Burbuja 1 · As 6 ações de higiene', tema:'ducharse · secarse · peinarse · cepillarse los dientes · lavarse las manos · vestirse', pag:'p. 68', cor:'#1E9BD7', ala:'acoes',
+  html:`<p class="narrador">Pompita diz: "¡Hola! Eu sou a Pompita, uma bolhinha de sabão 🫧. O capítulo 8 do livro se chama <b>Higiene y cuidados personales</b> (higiene e cuidados pessoais). Na página 68 aparecem <b>6 ações</b> que fazemos para cuidar do corpo. Aperte o 🔊 para ouvir cada uma!"</p>
+<div class="vocs">${W('ducharse','tomar banho de chuveiro','🚿')}${W('secarse','secar-se (com a toalha)','🧖')}${W('peinarse','pentear-se','💇')}${W('cepillarse los dientes','escovar os dentes','🪥')}${W('lavarse las manos','lavar as mãos','🧼')}${W('vestirse','vestir-se','👕')}</div>
+<div class="regra">🔎 <b>Repare:</b> as 6 ações terminam em <b>-SE</b>: duchar<b>se</b>, secar<b>se</b>, peinar<b>se</b>, cepillar<b>se</b> los dientes, lavar<b>se</b> las manos, vestir<b>se</b>.</div>
+<div class="caixa">🪥 Duas ações têm um pedacinho a mais: cepillarse <b>los dientes</b> (os dentes) e lavarse <b>las manos</b> (as mãos).</div>`,
+  palavras:['higiene','cuidados personales','ducharse','secarse','peinarse','cepillarse los dientes','lavarse las manos','vestirse'],
+  qs:[
+   {q:'Qual ação de higiene quer dizer "pentear-se"?', o:[
+     {t:'peinarse',ok:1,w:'Isso! Peinarse = pentear-se.'},
+     {t:'secarse',w:'Secarse = secar-se, com a toalha.'},
+     {t:'vestirse',w:'Vestirse = vestir-se, colocar a roupa.'},
+     {t:'ducharse',w:'Ducharse = tomar banho de chuveiro.'}]},
+   {q:'Na página 68, qual figura mostra "cepillarse los dientes"?', o:[
+     {t:'A criança com a escova na boca',ok:1,w:'Isso! Cepillarse los dientes = escovar os dentes.'},
+     {t:'A criança debaixo do chuveiro',w:'Essa figura é ducharse.'},
+     {t:'A criança abrindo a toalha',w:'Essa figura é secarse.'},
+     {t:'A criança colocando a camiseta',w:'Essa figura é vestirse.'}]},
+   {q:'O que as 6 ações da página 68 têm em comum na escrita?', o:[
+     {t:'Todas terminam em -se',ok:1,w:'Isso! ducharse, secarse, peinarse, cepillarse, lavarse, vestirse.'},
+     {t:'Todas começam com "la"',w:'Nenhuma das 6 ações começa com "la".'},
+     {t:'Todas têm a palavra "manos"',w:'Só lavarse las manos tem "manos".'},
+     {t:'Todas começam com "me"',w:'O "me" aparece na p. 73 (me lavo, me peino…), não no nome das ações.'}]}
+  ]},
+{ id:'b2', emoji:'🧴', titulo:'Burbuja 2 · Para que serve cada objeto?', tema:'la toalla · el peine · el cepillo de dientes · el grifo', pag:'p. 70 (atividade 2)', cor:'#8E6CD9', ala:'acoes',
+  html:`<p class="narrador">Pompita diz: "No banheiro tem 4 objetos muito importantes. Na página 70, o livro pergunta: <b>para que se usa</b> cada um?"</p>
+<div class="vocs">${W('la toalla','a toalha','🧖')}${W('el peine','o pente','💇')}${W('el cepillo de dientes','a escova de dentes','🪥')}${W('el grifo','a torneira','🚰')}</div>
+<div class="regra">${F('Se usa la toalla para secarse.')}<br>${F('Se usa el peine para peinarse.')}<br>${F('Se usa el cepillo de dientes para cepillarse los dientes.')}<br>${F('Se usa el grifo para lavarse las manos.')}</div>
+<div class="regra azulado">🔎 <b>Truque:</b> o nome do objeto ajuda! <b>peine</b> → <b>peinar</b>se · <b>cepillo</b> de dientes → <b>cepillar</b>se los dientes.</div>
+<div class="caixa">✍️ <b>Atenção na escrita</b> (no livro, uma resposta desta atividade saiu sem o -se final): escreva a ação inteira, com <b>-SE</b>: cepillar<b>se</b> los dientes, lavar<b>se</b> las manos.</div>`,
+  palavras:['la toalla','el peine','el cepillo de dientes','el grifo','Se usa … para …'],
+  qs:[
+   {q:'Complete como no livro: "Se usa la toalla para ______."', o:[
+     {t:'secarse',ok:1,w:'Isso! A toalha serve para secar-se.'},
+     {t:'peinarse',w:'Para peinarse se usa el peine.'},
+     {t:'ducharse',w:'A toalha não é para tomar banho: ela é usada para secar-se.'},
+     {t:'vestirse',w:'Vestirse é colocar a roupa; a toalha é para secarse.'}]},
+   {q:'Na página 70, para que se usa "el grifo" (a torneira)?', o:[
+     {t:'para lavarse las manos',ok:1,w:'Isso! Se usa el grifo para lavarse las manos.'},
+     {t:'para peinarse',w:'Para peinarse se usa el peine.'},
+     {t:'para secarse',w:'Para secarse se usa la toalla.'},
+     {t:'para vestirse',w:'O grifo não tem nada a ver com a roupa.'}]},
+   {q:'Qual objeto combina com "peinarse"?', o:[
+     {t:'el peine',ok:1,w:'Isso! Se usa el peine para peinarse.'},
+     {t:'la toalla',w:'La toalla é para secarse.'},
+     {t:'el grifo',w:'El grifo é para lavarse las manos.'},
+     {t:'el cepillo de dientes',w:'El cepillo de dientes é para cepillarse los dientes.'}]}
+  ]},
+{ id:'b3', emoji:'🔤', titulo:'Burbuja 3 · Letras embaralhadas e o final -RSE', tema:'TIRSEVES · CHARDUSE · SENARPEI · CARSESE', pag:'p. 70 (atividade 1)', cor:'#E0A100', ala:'acoes',
+  html:`<p class="narrador">Pompita diz: "Ops! A espuma embaralhou as letras! Na página 70, o livro manda ordenar as letras e escrever o nome da ação de cada figura."</p>
+<table class="mini"><tr><th>Letras embaralhadas</th><th>Figura</th><th>Palavra certa</th></tr>
+<tr><td>a. TIRSEVES</td><td>👕 criança colocando a camiseta</td><td>${F('vestirse')}</td></tr>
+<tr><td>b. CHARDUSE</td><td>🚿 criança no chuveiro</td><td>${F('ducharse')}</td></tr>
+<tr><td>c. SENARPEI</td><td>💇 criança com o pente</td><td>${F('peinarse')}</td></tr>
+<tr><td>d. CARSESE</td><td>🧖 criança com a toalha</td><td>${F('secarse')}</td></tr></table>
+<div class="regra">🧩 <b>Dica para desembaralhar:</b> separe primeiro as letras <b>R · S · E</b> (o final -RSE). Sobra pouca coisa para arrumar:<br>TIRSEVES → sobra T·I·V·E·S → <b>VESTI</b>+RSE<br>CHARDUSE → sobra C·H·A·D·U → <b>DUCHA</b>+RSE<br>SENARPEI → sobra N·A·P·E·I → <b>PEINA</b>+RSE<br>CARSESE → sobra C·A·S·E → <b>SECA</b>+RSE</div>
+<div class="caixa">✍️ <b>Cuidado com o final!</b> No livro, algumas respostas desta atividade saíram com o final trocado (parecia "-rne" ou "-rte"). O certo é sempre <b>-RSE</b>: vesti<b>rse</b>, ducha<b>rse</b>, peina<b>rse</b>, seca<b>rse</b>.</div>`,
+  palavras:['vestirse','ducharse','peinarse','secarse','final -RSE'],
+  qs:[
+   {q:'Ordene as letras: C A R S E S E', o:[
+     {t:'secarse',ok:1,w:'Isso! CARSESE = SECA + RSE.'},
+     {t:'secarne',w:'O final está errado: o certo é -rse.'},
+     {t:'cesarse',w:'Usa as mesmas letras, mas não é a palavra do livro: a figura mostra a criança se secando com a toalha.'},
+     {t:'ducharse',w:'Ducharse precisaria das letras D, U e H.'}]},
+   {q:'Qual palavra está escrita certinha?', o:[
+     {t:'peinarse',ok:1,w:'Perfeito: PEINA + RSE.'},
+     {t:'peinarne',w:'O final é -rse, não -rne.'},
+     {t:'peinarte',w:'O final é -rse, não -rte.'},
+     {t:'penarse',w:'Faltou o i: pe-I-nar-se.'}]},
+   {q:'As letras C H A R D U S E formam qual ação, e com qual figura ela combina?', o:[
+     {t:'ducharse — a criança no chuveiro',ok:1,w:'Isso! CHARDUSE = DUCHA + RSE.'},
+     {t:'ducharse — a criança com o pente',w:'A palavra está certa, mas a criança com o pente é peinarse.'},
+     {t:'secarse — a criança com a toalha',w:'Secarse não tem as letras H, D e U.'},
+     {t:'vestirse — a criança colocando a camiseta',w:'Vestirse precisaria das letras V, T e I.'}]}
+  ]},
+{ id:'b4', emoji:'🫧', titulo:'Burbuja 4 · A campanha de saúde', tema:'campaña de salud · Día mundial del lavado de manos', pag:'p. 69', cor:'#2DBE8C', ala:'campanha',
+  html:`<p class="narrador">Pompita diz: "Na página 69 tem um cartaz de uma <b>campanha de saúde</b> (campaña de salud). Olhe com atenção: ele tem uma <b>frase</b> e uma <b>data</b> importantes!"</p>
+<div class="regra">📢 A frase do cartaz:<br>${F('Estar limpios y sanos está en nuestras manos.')}<br>= Estar limpos e saudáveis está em nossas mãos.</div>
+<div class="regra azulado">📅 Embaixo do cartaz: <b>15 de octubre</b> (15 de outubro) · ${F('Día mundial del lavado de manos')}<br>= Dia mundial da lavagem das mãos.</div>
+<p>No desenho do cartaz tem uma "continha": 💧 gota de água + 🧼 sabonete (<b>jabón</b>) = 🖐️ mão limpinha.</p>
+<div class="caixa">❓ A atividade 3 pergunta: ${F('¿Qué medida de higiene promueve la campaña?')} (Que medida de higiene a campanha incentiva?). A resposta é <b>lavarse las manos</b>, porque o cartaz é do <b>Día mundial del lavado de manos</b>.<br>✍️ <b>Atenção:</b> no livro, a figura marcada foi a do chuveiro (ducharse). Cuidado! O cartaz fala de <b>manos</b>.</div>
+<p class="sub">As atividades 1 e 2 desta página são de ouvir o áudio do livro e ficaram de fora do kit.</p>`,
+  palavras:['campaña de salud','medida de higiene','limpios','sanos','manos','jabón','Día mundial del lavado de manos','15 de octubre'],
+  qs:[
+   {q:'Qual medida de higiene a campanha da página 69 incentiva?', o:[
+     {t:'lavarse las manos',ok:1,w:'Isso! O cartaz é do Día mundial del lavado de manos.'},
+     {t:'ducharse',w:'O cartaz fala de "lavado de manos", não de chuveiro.'},
+     {t:'cepillarse los dientes',w:'O cartaz não fala de dentes, e sim de mãos.'},
+     {t:'peinarse',w:'O cartaz não fala de cabelo, e sim de mãos.'}]},
+   {q:'Segundo o cartaz, em que dia é o Día mundial del lavado de manos?', o:[
+     {t:'15 de octubre',ok:1,w:'Isso! 15 de outubro.'},
+     {t:'5 de octubre',w:'O número no cartaz é 15.'},
+     {t:'25 de octubre',w:'O número no cartaz é 15.'},
+     {t:'13 de octubre',w:'O número no cartaz é 15.'}]},
+   {q:'Complete a frase do cartaz: "Estar limpios y sanos está en nuestras ______."', o:[
+     {t:'manos',ok:1,w:'Isso! Está em nossas mãos.'},
+     {t:'dientes',w:'A frase termina em "manos" (mãos).'},
+     {t:'toallas',w:'A frase termina em "manos" (mãos).'},
+     {t:'duchas',w:'A frase termina em "manos" (mãos).'}]}
+  ]},
+{ id:'b5', emoji:'🗣️', titulo:'Burbuja 5 · A historieta do lanche', tema:'me lavo · me cepillo · antes de comer · después de comer', pag:'p. 73 (atividade 2)', cor:'#E35D9B', ala:'verbos',
+  html:`<p class="narrador">Pompita diz: "Na página 73 tem uma <b>historieta</b> (historinha em quadrinhos) com duas crianças na hora do lanche. Leia os balões e repare nas palavras destacadas: <b>ME LAVO</b> e <b>ME CEPILLO</b>."</p>
+<div class="regra">🍽️ <b>1ª cena</b> (antes do lanche)<br>💬 ${F('¡Listo!, ya podemos comer, acabo de lavarme las manos.')}<br>= Pronto, já podemos comer, acabei de lavar as mãos.<br>💬 ${F('Yo también siempre me lavo las manos antes de comer.')}<br>= Eu também sempre lavo as mãos antes de comer.</div>
+<div class="regra azulado">🍌 <b>2ª cena</b> (depois do lanche)<br>💬 ${F('Hum, qué rica estaba la merienda. ¿Vamos a jugar?')}<br>= Hum, que gostoso estava o lanche. Vamos brincar?<br>💬 ${F('Sí, pero, después de comer siempre me cepillo los dientes.')}<br>= Sim, mas depois de comer sempre escovo os dentes.</div>
+<div class="caixa">⏰ <b>antes de comer</b> → me lavo las manos · <b>después de comer</b> → me cepillo los dientes.</div>`,
+  palavras:['historieta','me lavo','me cepillo','antes de comer','después de comer','siempre','la merienda','¿Vamos a jugar?'],
+  qs:[
+   {q:'Na historieta, o que as crianças fazem ANTES de comer?', o:[
+     {t:'Lavam as mãos ("me lavo las manos")',ok:1,w:'Isso! "Siempre me lavo las manos antes de comer."'},
+     {t:'Escovam os dentes ("me cepillo los dientes")',w:'Escovar os dentes é DEPOIS de comer.'},
+     {t:'Tomam banho ("me ducho")',w:'A historieta não fala de banho.'},
+     {t:'Penteiam o cabelo ("me peino")',w:'A historieta não fala de pentear.'}]},
+   {q:'Quando uma criança convida "¿Vamos a jugar?", a outra responde que antes vai:', o:[
+     {t:'escovar os dentes, porque sempre faz isso depois de comer',ok:1,w:'Isso! "Después de comer siempre me cepillo los dientes."'},
+     {t:'lavar as mãos, porque ainda vai comer',w:'O lanche já acabou: "qué rica estaba la merienda".'},
+     {t:'tomar banho de chuveiro',w:'A historieta não fala de chuveiro.'},
+     {t:'vestir-se',w:'A historieta não fala de roupa.'}]},
+   {q:'Na frase "Yo también siempre me lavo las manos antes de comer", a palavra "siempre" quer dizer:', o:[
+     {t:'sempre',ok:1,w:'Isso! siempre = sempre.'},
+     {t:'também',w:'"Também" é a palavra "también", que vem antes na frase.'},
+     {t:'depois',w:'"Depois" é "después".'},
+     {t:'antes',w:'"Antes" aparece no fim da frase: antes de comer.'}]}
+  ]},
+{ id:'b6', emoji:'🪞', titulo:'Burbuja 6 · Verbos: do -SE para o ME', tema:'me ducho · me seco · me visto · me peino · me lavo · me cepillo', pag:'p. 73 (atividade 3 — tabela)', cor:'#1577A8', ala:'verbos',
+  html:`<p class="narrador">Pompita diz: "Na tabela da página 73, cada ação aparece de dois jeitos: o <b>nome da ação</b> (com -SE no fim) e o jeito de dizer que <b>EU faço</b> (com ME na frente). Olhe no espelho e repita comigo!"</p>
+${TABELA_VERBOS}
+<div class="regra">🔁 <b>O padrão da tabela:</b> o <b>-se</b> do fim sai, o <b>me</b> vai para a frente e a palavra termina em <b>-o</b>: duch<b>arse</b> → <b>me</b> duch<b>o</b> · lav<b>arse</b> → <b>me</b> lav<b>o</b> · pein<b>arse</b> → <b>me</b> pein<b>o</b>.</div>
+<div class="caixa">⚠️ <b>Pegadinha:</b> <b>vestirse</b> vira <b>me VISTO</b> (com <b>i</b>!), e não "me vesto".</div>`,
+  palavras:['me ducho','me seco','me visto','me peino','me lavo','me cepillo'],
+  qs:[
+   {q:'Pela tabela da página 73, "secarse" vira:', o:[
+     {t:'me seco',ok:1,w:'Isso! secarse → me seco.'},
+     {t:'me secarse',w:'Quando EU faço, o -se sai: me seco.'},
+     {t:'me seca',w:'Na tabela, a palavra termina em -o: me seco.'},
+     {t:'me ducho',w:'Me ducho vem de ducharse.'}]},
+   {q:'Qual par está igual à tabela da página 73?', o:[
+     {t:'vestirse → me visto',ok:1,w:'Isso! Com i: me visto.'},
+     {t:'vestirse → me vesto',w:'Pegadinha! Na tabela é me VISTO, com i.'},
+     {t:'peinarse → me peina',w:'Na tabela é me peino, terminando em -o.'},
+     {t:'cepillarse → me cepilla',w:'Na tabela é me cepillo, terminando em -o.'}]},
+   {q:'Na tabela, o jeito de dizer "eu escovo (os dentes)" é:', o:[
+     {t:'me cepillo',ok:1,w:'Isso! cepillarse → me cepillo.'},
+     {t:'me peino',w:'Me peino = eu me penteio.'},
+     {t:'me lavo',w:'Me lavo = eu me lavo / eu lavo (as mãos).'},
+     {t:'cepillarse',w:'Cepillarse é o nome da ação, não o jeito de dizer "eu faço".'}]}
+  ]},
+{ id:'b7', emoji:'📝', titulo:'Burbuja 7 · O relato da Carmen', tema:'Quando? → o que a Carmen faz', pag:'p. 73 (atividade 3 — relato)', cor:'#8E6CD9', ala:'verbos',
+  html:`<p class="narrador">Pompita diz: "A Carmen escreveu um <b>relato</b> (um textinho contando a rotina dela). Ela tem 8 anos e já sabe tudo o que precisa fazer para cuidar da higiene!"</p>
+<div class="regra">${F('Me llamo Carmen, tengo 8 años y ya sé todo lo que tengo que hacer para cuidar mi higiene.')}<br>${F('Siempre antes de comer o después de ir al baño, me lavo las manos.')}<br>${F('Para evitar las caries, cuando me despierto o cuando como algo, me cepillo los dientes.')}<br>${F('Cuando salgo de la ducha, primero me seco y enseguida me visto.')}<br>${F('Me gusta tener el pelo limpio y peinado, por eso me peino siempre antes de salir.')}<br>${F('¿Y tú? ¿También sabes qué debes hacer para cuidar la higiene personal?')}</div>
+<table class="mini"><tr><th>Quando?</th><th>O que a Carmen faz</th></tr>
+<tr><td>antes de comer · depois de ir ao banheiro (después de ir al baño)</td><td>🧼 me lavo las manos</td></tr>
+<tr><td>quando acorda (cuando me despierto) · quando come algo (cuando como algo)</td><td>🪥 me cepillo los dientes — para evitar as cáries (las caries)</td></tr>
+<tr><td>quando sai do chuveiro (cuando salgo de la ducha)</td><td>🧖 <b>primero</b> me seco ➜ 👕 <b>enseguida</b> me visto</td></tr>
+<tr><td>antes de sair (antes de salir)</td><td>💇 me peino — gosta do cabelo limpo e penteado</td></tr></table>
+<div class="caixa">👀 <b>Palavra que engana:</b> <b>el pelo</b>, no relato, é o <b>cabelo</b>: "el pelo limpio y peinado" = o cabelo limpo e penteado.</div>`,
+  palavras:['me llamo','tengo 8 años','después de ir al baño','para evitar las caries','cuando me despierto','cuando salgo de la ducha','primero','enseguida','el pelo','antes de salir'],
+  qs:[
+   {q:'Segundo o relato, quando a Carmen escova os dentes ("me cepillo los dientes")?', o:[
+     {t:'Quando acorda ou quando come algo',ok:1,w:'Isso! "Cuando me despierto o cuando como algo, me cepillo los dientes."'},
+     {t:'Só antes de sair',w:'Antes de sair ela se penteia (me peino).'},
+     {t:'Depois de ir ao banheiro',w:'Depois de ir ao banheiro ela lava as mãos (me lavo las manos).'},
+     {t:'Quando sai do chuveiro',w:'Quando sai do chuveiro ela se seca e se veste.'}]},
+   {q:'Quando sai do chuveiro, o que a Carmen faz PRIMEIRO?', o:[
+     {t:'me seco',ok:1,w:'Isso! "Primero me seco y enseguida me visto."'},
+     {t:'me visto',w:'Ela se veste "enseguida", ou seja, logo DEPOIS de se secar.'},
+     {t:'me peino',w:'Ela se penteia antes de sair.'},
+     {t:'me lavo las manos',w:'Ela lava as mãos antes de comer ou depois de ir ao banheiro.'}]},
+   {q:'Por que a Carmen se penteia sempre antes de sair?', o:[
+     {t:'Porque gosta de ter o cabelo (el pelo) limpo e penteado',ok:1,w:'Isso! "Me gusta tener el pelo limpio y peinado, por eso me peino."'},
+     {t:'Para evitar as cáries',w:'Evitar as cáries é o motivo de escovar os dentes.'},
+     {t:'Porque acabou de comer',w:'Depois de comer, o relato fala de escovar os dentes.'},
+     {t:'Porque vai tomar banho',w:'O relato não diz isso.'}]}
+  ]},
+{ id:'b8', emoji:'🏆', titulo:'Burbuja 8 · Revisão geral', tema:'Tudo misturado', pag:'Cap. 8 inteiro', cor:'#E0A100', ala:'final',
+  html:`<p class="narrador">Pompita diz: "Última bolha antes do Mapa! Agora vem tudo misturado: ações, objetos, campanha e verbos. Você consegue!"</p>
+<div class="regra">🫧 Lembretes rápidos: as 6 ações terminam em <b>-RSE</b> · <b>toalla</b> → secarse · <b>peine</b> → peinarse · <b>cepillo de dientes</b> → cepillarse los dientes · <b>grifo</b> → lavarse las manos · campanha = <b>lavado de manos</b> (15 de octubre) · ducharse → <b>me ducho</b> · vestirse → <b>me visto</b>.</div>`,
+  palavras:['-RSE','toalla · peine · cepillo · grifo','lavado de manos','me + -o'],
+  qs:[
+   {q:'"Cuando salgo de la ducha, primero me seco." Qual objeto a Carmen usa nessa hora?', o:[
+     {t:'la toalla',ok:1,w:'Isso! Se usa la toalla para secarse.'},
+     {t:'el peine',w:'El peine é para peinarse.'},
+     {t:'el grifo',w:'El grifo é para lavarse las manos.'},
+     {t:'el cepillo de dientes',w:'El cepillo de dientes é para cepillarse los dientes.'}]},
+   {q:'Qual frase está toda certa, do jeito do livro?', o:[
+     {t:'Se usa el peine para peinarse.',ok:1,w:'Perfeito: el peine + peinarse com -rse.'},
+     {t:'Se usa el peine para peinarne.',w:'O final é -rse, não -rne.'},
+     {t:'Se usa el peine para secarse.',w:'Para secarse se usa la toalla.'},
+     {t:'Se usa la peine para peinarse.',w:'O livro escreve EL peine.'}]},
+   {q:'Qual ação aparece TANTO no cartaz da p. 69 QUANTO na historieta da p. 73?', o:[
+     {t:'lavarse las manos',ok:1,w:'Isso! Cartaz: lavado de manos. Historieta: me lavo las manos.'},
+     {t:'cepillarse los dientes',w:'Aparece só na historieta, não no cartaz.'},
+     {t:'ducharse',w:'Não aparece em nenhum dos dois.'},
+     {t:'vestirse',w:'Não aparece em nenhum dos dois.'}]}
+  ]}
+];
+
+const RAMOS = [
+ {nome:'🚿 As 6 ações (p. 68)', cor:'#1E9BD7', nos:[
+   'ducharse · secarse · vestirse · lavarse las manos',
+   ['pentear-se = ', {id:'L1',certa:'peinarse',errada:'el peine'}],
+   ['escovar os dentes = cepillarse los ', {id:'L2',certa:'dientes',errada:'manos'}]]},
+ {nome:'🧴 Os objetos (p. 70)', cor:'#8E6CD9', nos:[
+   ['Se usa la toalla para ', {id:'L3',certa:'secarse',errada:'peinarse'}],
+   ['Se usa el cepillo de dientes para ', {id:'L4',certa:'cepillarse los dientes',errada:'vestirse'}],
+   'el peine → peinarse · el grifo → lavarse las manos']},
+ {nome:'🔤 Letras embaralhadas (p. 70)', cor:'#E0A100', nos:[
+   ['CHARDUSE = ', {id:'L5',certa:'ducharse',errada:'me ducho'}],
+   'TIRSEVES = vestirse · SENARPEI = peinarse · CARSESE = secarse',
+   ['Todas terminam em ', {id:'L6',certa:'-rse',errada:'me'}]]},
+ {nome:'🫧 Campaña de salud (p. 69)', cor:'#2DBE8C', nos:[
+   ['15 de octubre: Día mundial del lavado de ', {id:'L7',certa:'manos',errada:'dientes'}],
+   'Estar limpios y sanos está en nuestras manos',
+   ['A campanha incentiva: ', {id:'L8',certa:'lavarse las manos',errada:'ducharse'}]]},
+ {nome:'🪞 Verbos (p. 73)', cor:'#E35D9B', nos:[
+   ['peinarse → me ', {id:'L9',certa:'peino',errada:'peine'}],
+   ['vestirse → me ', {id:'L10',certa:'visto',errada:'vestirse'}],
+   'ducharse → me ducho · secarse → me seco · lavarse → me lavo · cepillarse → me cepillo']},
+ {nome:'📝 Historieta e relato (p. 73)', cor:'#1577A8', nos:[
+   'antes de comer → me lavo las manos · después de comer → me cepillo los dientes',
+   ['Cuando salgo de la ducha, primero me ', {id:'L11',certa:'seco',errada:'peino'}, ' y enseguida me visto.'],
+   'Carmen, 8 años: me peino siempre antes de salir']}
+];
+
+const VF = [
+ {f:'No capítulo 8, "peinarse" quer dizer pentear-se.', v:1, e:'Verdadeiro. Peinarse = pentear-se; e se usa el peine para peinarse.', a:'peinarse'},
+ {f:'"Vestirse" é a ação de tomar banho de chuveiro.', v:0, e:'Falso. Tomar banho de chuveiro é ducharse. Vestirse é colocar a roupa.', a:'ducharse'},
+ {f:'As 6 ações da página 68 terminam em -se.', v:1, e:'Verdadeiro. ducharse, secarse, peinarse, cepillarse los dientes, lavarse las manos, vestirse.'},
+ {f:'No livro, "se usa la toalla para peinarse".', v:0, e:'Falso. Se usa la toalla para secarse; para peinarse se usa el peine.', a:'Se usa la toalla para secarse.'},
+ {f:'No livro, "se usa el grifo para lavarse las manos".', v:1, e:'Verdadeiro. El grifo é a torneira.', a:'Se usa el grifo para lavarse las manos.'},
+ {f:'O objeto que combina com "cepillarse los dientes" é el cepillo de dientes.', v:1, e:'Verdadeiro. Se usa el cepillo de dientes para cepillarse los dientes.', a:'el cepillo de dientes'},
+ {f:'As letras C A R S E S E formam a palavra "secarse".', v:1, e:'Verdadeiro. CARSESE = SECA + RSE: a criança com a toalha.', a:'secarse'},
+ {f:'As letras S E N A R P E I formam a palavra "peinarne".', v:0, e:'Falso. Formam peinarse: o final é sempre -rse.', a:'peinarse'},
+ {f:'As letras C H A R D U S E formam "ducharse", a ação de tomar banho de chuveiro.', v:1, e:'Verdadeiro. CHARDUSE = DUCHA + RSE.', a:'ducharse'},
+ {f:'O cartaz da página 69 é do Día mundial del lavado de manos.', v:1, e:'Verdadeiro. Está escrito embaixo do cartaz.', a:'Día mundial del lavado de manos'},
+ {f:'Segundo o cartaz, o Día mundial del lavado de manos é no dia 15 de octubre.', v:1, e:'Verdadeiro. 15 de outubro.', a:'15 de octubre'},
+ {f:'A campanha da página 69 incentiva a ducharse (tomar banho de chuveiro).', v:0, e:'Falso. A campanha incentiva lavarse las manos: é o Día mundial del lavado de manos.', a:'lavarse las manos'},
+ {f:'No cartaz está escrito: "Estar limpios y sanos está en nuestras manos".', v:1, e:'Verdadeiro. Estar limpos e saudáveis está em nossas mãos.', a:'Estar limpios y sanos está en nuestras manos.'},
+ {f:'Na historieta, as crianças escovam os dentes antes de comer.', v:0, e:'Falso. Antes de comer elas lavam as mãos; escovar os dentes é depois de comer.', a:'Yo también siempre me lavo las manos antes de comer.'},
+ {f:'Na historieta, uma criança diz: "Después de comer siempre me cepillo los dientes".', v:1, e:'Verdadeiro. Ela diz isso depois do lanche, quando a outra convida para brincar.', a:'Después de comer siempre me cepillo los dientes.'},
+ {f:'Na tabela da página 73, "lavarse" vira "me lavo".', v:1, e:'Verdadeiro. lavarse → me lavo.', a:'me lavo'},
+ {f:'Na tabela da página 73, "vestirse" vira "me vesto".', v:0, e:'Falso. Pegadinha! Na tabela é me VISTO, com i.', a:'me visto'},
+ {f:'Na tabela da página 73, "cepillarse" vira "me cepillo".', v:1, e:'Verdadeiro. cepillarse → me cepillo.', a:'me cepillo'},
+ {f:'Na tabela da página 73, "ducharse" vira "me ducha".', v:0, e:'Falso. Na tabela é me ducho, terminando em -o.', a:'me ducho'},
+ {f:'A Carmen, do relato, tem 8 anos.', v:1, e:'Verdadeiro. "Me llamo Carmen, tengo 8 años."', a:'Me llamo Carmen, tengo 8 años.'},
+ {f:'A Carmen lava as mãos antes de comer ou depois de ir ao banheiro.', v:1, e:'Verdadeiro. "Siempre antes de comer o después de ir al baño, me lavo las manos."', a:'Siempre antes de comer o después de ir al baño, me lavo las manos.'},
+ {f:'Para evitar as cáries, a Carmen escova os dentes só antes de sair.', v:0, e:'Falso. Ela escova os dentes quando acorda ou quando come algo. Antes de sair, ela se penteia.', a:'Para evitar las caries, cuando me despierto o cuando como algo, me cepillo los dientes.'},
+ {f:'Quando sai do chuveiro, a Carmen primeiro se veste e depois se seca.', v:0, e:'Falso. É ao contrário: "primero me seco y enseguida me visto".', a:'Cuando salgo de la ducha, primero me seco y enseguida me visto.'},
+ {f:'A Carmen se penteia sempre antes de sair, porque gosta do cabelo limpo e penteado.', v:1, e:'Verdadeiro. "Me gusta tener el pelo limpio y peinado, por eso me peino siempre antes de salir."', a:'Me peino siempre antes de salir.'},
+ {f:'No livro, a palavra peine aparece com "el" na frente: el peine.', v:1, e:'Verdadeiro. "Se usa el peine para…".', a:'el peine'},
+ {f:'No livro, a frase certa é "Se usa el cepillo de dientes para peinarse".', v:0, e:'Falso. Se usa el cepillo de dientes para cepillarse los dientes. Para peinarse se usa el peine.', a:'Se usa el cepillo de dientes para cepillarse los dientes.'}
+];
+
+const RELAMPAGO = [
+ ['Como se diz "escovar os dentes"?', 'cepillarse los dientes'],
+ ['Para que se usa la toalla?', 'Para secarse.'],
+ ['Para que se usa el grifo?', 'Para lavarse las manos.'],
+ ['Ordene: T I R S E V E S', 'VESTIRSE'],
+ ['Como terminam as 6 ações da p. 68?', 'Em -se (com R antes: -rse).'],
+ ['Que dia é o Día mundial del lavado de manos?', '15 de octubre.'],
+ ['Que medida de higiene a campanha da p. 69 incentiva?', 'lavarse las manos'],
+ ['vestirse → ?', 'me visto (com i!)'],
+ ['Quando sai do chuveiro, a Carmen primeiro…', 'me seco (e enseguida me visto).'],
+ ['Antes de comer…? Depois de comer…?', 'me lavo las manos · me cepillo los dientes']
+];
+
+const LINHA = [
+ ['cuando me despierto','🌅','quando acorda → me cepillo los dientes (relato)'],
+ ['cuando salgo de la ducha','🚿','quando sai do chuveiro → primero me seco ➜ enseguida me visto (relato)'],
+ ['antes de salir','🚪','antes de sair → me peino (relato)'],
+ ['antes de comer','🍽️','antes de comer → me lavo las manos (historieta e relato)'],
+ ['después de comer','🍌','depois de comer → me cepillo los dientes (historieta)'],
+ ['cuando como algo','🍎','quando come algo → me cepillo los dientes (relato)'],
+ ['después de ir al baño','🚽','depois de ir ao banheiro → me lavo las manos (relato)']
+];
+
+// SIM: o:[ [texto, 1, comentário] = certa | [texto, comentário] = errada ], d = dica, a = áudio (só aparece no gabarito)
+const SIM = [
+ {q:'Qual destas é uma das 6 ações de higiene da página 68?', o:[['ducharse',1,'Ducharse = tomar banho de chuveiro.'],['la toalla','La toalla é um objeto (a toalha), não uma ação.'],['la merienda','La merienda é o lanche da historieta.'],['el grifo','El grifo é um objeto (a torneira).']], d:'As ações terminam em -se.', a:'ducharse'},
+ {q:'Como se diz "vestir-se" em espanhol?', o:[['vestirse',1,'Vestirse = colocar a roupa.'],['ducharse','Ducharse = tomar banho de chuveiro.'],['secarse','Secarse = secar-se com a toalha.'],['peinarse','Peinarse = pentear-se.']], d:'vestir + se.', a:'vestirse'},
+ {q:'Na figura, uma criança está com a escova de dentes na boca. Que ação ela faz?', o:[['cepillarse los dientes',1,'Escovar os dentes.'],['lavarse las manos','Lavar as mãos é na torneira (el grifo).'],['peinarse','Peinarse é com o pente.'],['secarse','Secarse é com a toalha.']], d:'cepillo → cepillarse.', a:'cepillarse los dientes'},
+ {q:'Complete como no livro: "Se usa el peine para ______."', o:[['peinarse',1,'O pente serve para pentear-se.'],['secarse','Para secarse se usa la toalla.'],['lavarse las manos','Para lavarse las manos se usa el grifo.'],['ducharse','O pente não serve para tomar banho.']], d:'peine → peinarse.', a:'Se usa el peine para peinarse.'},
+ {q:'Complete como no livro: "Se usa la toalla para ______."', o:[['secarse',1,'A toalha serve para secar-se.'],['peinarse','Para peinarse se usa el peine.'],['cepillarse los dientes','Para isso se usa el cepillo de dientes.'],['vestirse','Vestirse é colocar a roupa.']], d:'toalla → secarse.', a:'Se usa la toalla para secarse.'},
+ {q:'Complete como no livro: "Se usa el grifo para ______."', o:[['lavarse las manos',1,'El grifo é a torneira.'],['peinarse','Para peinarse se usa el peine.'],['secarse','Para secarse se usa la toalla.'],['vestirse','A torneira não tem nada a ver com a roupa.']], d:'grifo (torneira) → manos.', a:'Se usa el grifo para lavarse las manos.'},
+ {q:'Qual objeto se usa para "cepillarse los dientes"?', o:[['el cepillo de dientes',1,'A escova de dentes.'],['el peine','El peine é para peinarse.'],['la toalla','La toalla é para secarse.'],['el grifo','El grifo é para lavarse las manos.']], d:'O nome do objeto parece o da ação.', a:'el cepillo de dientes'},
+ {q:'Ordene as letras e descubra a ação: T I R S E V E S', o:[['vestirse',1,'TIRSEVES = VESTI + RSE.'],['vestirte','O final é -rse, não -rte.'],['secarse','Secarse precisaria das letras C e A.'],['ducharse','Ducharse precisaria das letras D, U, C e H.']], d:'Separe R·S·E e arrume o resto.', a:'vestirse'},
+ {q:'As letras S E N A R P E I formam:', o:[['peinarse',1,'SENARPEI = PEINA + RSE.'],['peinarne','O final é -rse, não -rne.'],['peinarte','O final é -rse, não -rte.'],['penarse','Faltou o i: pe-I-nar-se.']], d:'Sempre -RSE no fim.', a:'peinarse'},
+ {q:'Qual palavra está escrita corretamente?', o:[['secarse',1,'SECA + RSE.'],['secarne','O final é -rse.'],['secarte','O final é -rse.'],['sercase','As letras estão fora do lugar.']], d:'As 6 ações terminam em -RSE.', a:'secarse'},
+ {q:'Ao desembaralhar C H A R D U S E, com qual figura a palavra combina?', o:[['a criança tomando banho no chuveiro',1,'CHARDUSE = ducharse.'],['a criança se secando com a toalha','Essa é secarse (CARSESE).'],['a criança se penteando','Essa é peinarse (SENARPEI).'],['a criança colocando a camiseta','Essa é vestirse (TIRSEVES).']], d:'CHARDUSE → DUCHA + RSE.', a:'ducharse'},
+ {q:'O cartaz da página 69 é do "Día mundial del lavado de ______".', o:[['manos',1,'Dia mundial da lavagem das mãos.'],['dientes','O cartaz fala de mãos, não de dentes.'],['pelo','O cartaz fala de mãos, não de cabelo.'],['toallas','O cartaz fala de mãos.']], d:'lavado de manos = lavagem das mãos.', a:'Día mundial del lavado de manos'},
+ {q:'Segundo o cartaz da página 69, quando é o Día mundial del lavado de manos?', o:[['15 de octubre',1,'É a data que está no cartaz.'],['13 de octubre','O número no cartaz é 15.'],['5 de octubre','O número no cartaz é 15.'],['25 de octubre','O número no cartaz é 15.']], d:'15 de outubro.', a:'15 de octubre'},
+ {q:'Complete a frase do cartaz: "Estar limpios y sanos está en nuestras ______."', o:[['manos',1,'Está em nossas mãos.'],['duchas','A frase termina em manos.'],['toallas','A frase termina em manos.'],['meriendas','Merienda é o lanche da historieta.']], d:'limpios y sanos = limpos e saudáveis.', a:'Estar limpios y sanos está en nuestras manos.'},
+ {q:'"¿Qué medida de higiene promueve la campaña?" Qual é a resposta certa para o cartaz da página 69?', o:[['lavarse las manos',1,'O cartaz é do Día mundial del lavado de manos.'],['ducharse','Cuidado! O cartaz fala de manos, não de chuveiro.'],['peinarse','O cartaz não fala de cabelo.'],['vestirse','O cartaz não fala de roupa.']], d:'Leia o nome do dia no cartaz.', a:'lavarse las manos'},
+ {q:'Na historieta da página 73, o que as crianças fazem ANTES de comer?', o:[['lavam as mãos: "me lavo las manos"',1,'"Siempre me lavo las manos antes de comer."'],['escovam os dentes: "me cepillo los dientes"','Isso é depois de comer.'],['tomam banho: "me ducho"','A historieta não fala de banho.'],['se penteiam: "me peino"','A historieta não fala de pentear.']], d:'antes de comer → manos.', a:'Yo también siempre me lavo las manos antes de comer.'},
+ {q:'Na historieta, depois do lanche ("Hum, qué rica estaba la merienda"), uma criança diz que sempre:', o:[['"me cepillo los dientes"',1,'"Después de comer siempre me cepillo los dientes."'],['"me lavo las manos"','Lavar as mãos foi antes de comer.'],['"me ducho"','A historieta não fala de chuveiro.'],['"me visto"','A historieta não fala de roupa.']], d:'después de comer → dientes.', a:'Sí, pero, después de comer siempre me cepillo los dientes.'},
+ {q:'Pela tabela da página 73, "ducharse" vira:', o:[['me ducho',1,'ducharse → me ducho.'],['me ducha','Na tabela termina em -o: me ducho.'],['me ducharse','Quando EU faço, o -se sai: me ducho.'],['me duchas','Na tabela é me ducho.']], d:'me + … + o.', a:'me ducho'},
+ {q:'Qual par está igual à tabela da página 73?', o:[['vestirse → me visto',1,'Com i: me visto.'],['vestirse → me vesto','Pegadinha! É me VISTO.'],['secarse → me seca','Na tabela é me seco.'],['peinarse → me peina','Na tabela é me peino.']], d:'vestirse → me VISTO.', a:'vestirse, me visto'},
+ {q:'Complete o relato da Carmen: "Siempre antes de comer o después de ir al baño, ______ las manos."', o:[['me lavo',1,'me lavo las manos.'],['me seco','Me seco é depois do chuveiro.'],['me peino','Me peino é antes de sair.'],['me visto','Me visto é depois de me secar.']], d:'manos → me lavo.', a:'Siempre antes de comer o después de ir al baño, me lavo las manos.'},
+ {q:'Complete o relato: "Para evitar las caries, cuando me despierto o cuando como algo, ______ los dientes."', o:[['me cepillo',1,'me cepillo los dientes.'],['me lavo','No relato, com os dentes a palavra é me cepillo.'],['me peino','Me peino é para o cabelo.'],['me seco','Me seco é com a toalha.']], d:'caries → dientes → me cepillo.', a:'Para evitar las caries, cuando me despierto o cuando como algo, me cepillo los dientes.'},
+ {q:'Complete o relato: "Cuando salgo de la ducha, primero ______ y enseguida me visto."', o:[['me seco',1,'Primeiro ela se seca.'],['me peino','Ela se penteia antes de sair.'],['me cepillo','Ela escova os dentes quando acorda ou quando come algo.'],['me lavo','Ela lava as mãos antes de comer ou depois de ir ao banheiro.']], d:'Saiu do chuveiro? Toalha!', a:'Cuando salgo de la ducha, primero me seco y enseguida me visto.'},
+ {q:'No relato, por que a Carmen se penteia ("me peino") sempre antes de sair?', o:[['Porque gosta de ter o cabelo limpo e penteado',1,'"Me gusta tener el pelo limpio y peinado."'],['Para evitar as cáries','Esse é o motivo de escovar os dentes.'],['Porque acabou de ir ao banheiro','Depois de ir ao banheiro ela lava as mãos.'],['Porque vai comer','Antes de comer ela lava as mãos.']], d:'el pelo = o cabelo.', a:'Me gusta tener el pelo limpio y peinado, por eso me peino siempre antes de salir.'},
+ {q:'No relato, quantos anos tem a Carmen?', o:[['8 años',1,'"Tengo 8 años."'],['9 años','O relato diz 8.'],['10 años','O relato diz 8.'],['15 años','O relato diz 8. O 15 é do cartaz (15 de octubre).']], d:'Me llamo Carmen, tengo…', a:'Me llamo Carmen, tengo 8 años.'},
+ {q:'Qual frase está toda certa, do jeito do livro?', o:[['Se usa el cepillo de dientes para cepillarse los dientes.',1,'Objeto certo, ação certa e final -rse.'],['Se usa el cepillo de dientes para peinarse.','Para peinarse se usa el peine.'],['Se usa la cepillo de dientes para cepillarse los dientes.','O livro escreve EL cepillo.'],['Se usa el cepillo de dientes para cepillarne los dientes.','O final é -rse, não -rne.']], d:'Confira: o objeto, o "el/la" e o final -rse.', a:'Se usa el cepillo de dientes para cepillarse los dientes.'}
+];
+
+const ALAS = {acoes:'🛁 Ala das Ações e dos Objetos (p. 68 e 70)', campanha:'🫧 Ala da Campanha (p. 69)', verbos:'🪞 Ala dos Verbos (p. 73)', final:'🏆 Última bolha — revisão geral'};
+
+// ---------- ÁUDIO (espanhol es-ES, rate 1) ----------
+function falar(txt){ try{ if(!('speechSynthesis' in window)) return; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(txt); u.lang = 'es-ES'; u.rate = 1; const v = speechSynthesis.getVoices().find(x=>/^es(-|_)ES/i.test(x.lang)) || speechSynthesis.getVoices().find(x=>/^es/i.test(x.lang)); if(v) u.voice = v; speechSynthesis.speak(u); }catch(e){} }
+try{ if('speechSynthesis' in window){ speechSynthesis.getVoices(); } }catch(e){}
+const VOCAB = [
+ ['ducharse','tomar banho de chuveiro','🚿'],['secarse','secar-se','🧖'],['peinarse','pentear-se','💇'],['cepillarse los dientes','escovar os dentes','🪥'],['lavarse las manos','lavar as mãos','🧼'],['vestirse','vestir-se','👕'],
+ ['la toalla','a toalha','🧖'],['el peine','o pente','💇'],['el cepillo de dientes','a escova de dentes','🪥'],['el grifo','a torneira','🚰'],
+ ['la ducha','o chuveiro','🚿'],['el baño','o banheiro','🚽'],['las manos','as mãos','🖐️'],['los dientes','os dentes','😁'],['el pelo','o cabelo','💇'],['el jabón','o sabonete','🧼'],
+ ['limpios','limpos','✨'],['sanos','saudáveis','💪'],['las caries','as cáries','🦷'],['la merienda','o lanche','🍌'],
+ ['siempre','sempre','🔁'],['antes de comer','antes de comer','⏮️'],['después de comer','depois de comer','⏭️'],['primero','primeiro','1️⃣'],['enseguida','em seguida, logo depois','2️⃣'],
+ ['me despierto','eu acordo','🌅'],['salgo de la ducha','eu saio do chuveiro','🚿'],['antes de salir','antes de sair','🚪'],
+ ['higiene','higiene','🫧'],['campaña de salud','campanha de saúde','📢']
+];
+
+
+// ===================== LÓGICA =====================
+const SLUG = 'esp3burbujas';
+const SEED_LEIT = 11, SEED_SIM = 7, SEED_MAPA = 3;
+const K = { leitura:SLUG+'_leitura_v1', mapa:SLUG+'_mapa_v1', vf:SLUG+'_vf_v1', resumo:SLUG+'_resumo_v1', simulado:SLUG+'_simulado_v1', trilha:SLUG+'_trilha_v1' };
+const CODIGO_PAIS = 'PAIS-77';
+const MEM = {};
+function ler(k){ try{ const v = localStorage.getItem(k); if(v!==null) return JSON.parse(v); }catch(e){} return MEM[k] ? JSON.parse(MEM[k]) : null; }
+function gravar(k,o){ const s = JSON.stringify(o); MEM[k] = s; try{ localStorage.setItem(k,s); }catch(e){} }
+function apagar(k){ delete MEM[k]; try{ localStorage.removeItem(k); }catch(e){} }
+
+let S = {};
+function carregar(){
+  S.leitura  = ler(K.leitura)  || {resp:{}, concluido:false};
+  S.mapa     = ler(K.mapa)     || {pecas:{}, concluido:false};
+  S.vf       = ler(K.vf)       || {melhor:null, rodadas:0, historico:[], concluido:false};
+  S.resumo   = ler(K.resumo)   || {maxRolagem:0, concluido:false};
+  S.simulado = ler(K.simulado) || {resp:{}, enviado:false, concluido:false};
+  S.trilha   = ler(K.trilha)   || {liberadoPelosPais:false, liberadoEm:null, vistos:{}, historico:[]};
+  if(!S.trilha.vistos) S.trilha.vistos = {};
+  if(!S.trilha.historico) S.trilha.historico = [];
+}
+function salvar(nome){ S[nome].salvoEm = new Date().toISOString(); gravar(K[nome], S[nome]); atualizarPainel(); renderTrilha(); }
+function concluir(nome){ if(!S[nome].concluido){ S[nome].concluido = true; S[nome].concluidoEm = new Date().toISOString(); } }
+
+// ---------- utilidades ----------
+function hashStr(s){ let h = 2166136261; for(let i=0;i<s.length;i++){ h ^= s.charCodeAt(i); h = Math.imul(h,16777619); } return h>>>0; }
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function embaralhar(arr, seed){ const r = mulberry32(seed); const a = arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(r()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function dataBR(iso){ if(!iso) return '—'; const d=new Date(iso); const p=n=>String(n).padStart(2,'0'); return `${p(d.getDate())}/${p(d.getMonth()+1)}/${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}`; }
+const $ = id => document.getElementById(id);
+const LETRAS = ['a','b','c','d'];
+
+// ---------- modal ----------
+function abrirModal(html, botoes){
+  const m = $('modal'); m.innerHTML = html + '<div style="margin-top:14px" id="modalBts"></div>';
+  (botoes||[{t:'OK', cls:'btn'}]).forEach(b=>{ const el=document.createElement('button'); el.className=b.cls||'btn'; el.textContent=b.t; el.onclick=()=>{ fecharModal(); if(b.fn) b.fn(); }; $('modalBts').appendChild(el); });
+  $('fundoModal').classList.add('aberto');
+}
+function fecharModal(){ $('fundoModal').classList.remove('aberto'); }
+
+// ---------- trilha ----------
+const ETAPAS = [
+  {id:'leitura', nome:'Leitura Guiada', ic:'📖'},
+  {id:'mapa', nome:'Mapa Mental para encaixar', ic:'🧠'},
+  {id:'vf', nome:'Verdadeiro ou Falso', ic:'✅'},
+  {id:'resumo', nome:'Resumo', ic:'🗺️'},
+  {id:'simulado', nome:'Simulado', ic:'📝'}
+];
+const idxEtapa = id => ETAPAS.findIndex(e=>e.id===id);
+function feito(id){ return !!(S[id] && S[id].concluido); }
+function aberta(i){ if(i<=0) return true; if(S.trilha.liberadoPelosPais) return true; return feito(ETAPAS[i-1].id) || feito(ETAPAS[i].id); }
+const TOTAL_PERG = BLOCOS.reduce((s,b)=>s+b.qs.length,0);
+function blocoFeito(b){ return b.qs.every((q,qi)=>S.leitura.resp[b.id+'_'+qi]); }
+function blocosFeitos(){ return BLOCOS.filter(blocoFeito).length; }
+const PECAS = []; RAMOS.forEach(r=>r.nos.forEach(n=>{ if(Array.isArray(n)) n.forEach(p=>{ if(typeof p==='object') PECAS.push(p); }); }));
+const TOTAL_PECAS = PECAS.length;
+function pecasFeitas(){ return PECAS.filter(p=>S.mapa.pecas[p.id] && S.mapa.pecas[p.id].feita).length; }
+function faltaTexto(i){
+  const ant = ETAPAS[i-1].id;
+  if(ant==='leitura') return `Destrava quando você terminar as ${BLOCOS.length} bolhas da Leitura Guiada (faltam ${BLOCOS.length-blocosFeitos()}).`;
+  if(ant==='mapa') return `Destrava quando você encaixar as ${TOTAL_PECAS} peças do Mapa Mental (faltam ${TOTAL_PECAS-pecasFeitas()}).`;
+  if(ant==='vf') return 'Destrava quando você jogar uma rodada completa (12 frases) do Verdadeiro ou Falso.';
+  if(ant==='resumo') return 'Destrava quando você ler o Resumo até o fim e clicar em "✅ Li o resumo até o fim".';
+  return '';
+}
+function ehNova(i){ return i>0 && aberta(i) && !feito(ETAPAS[i].id) && !S.trilha.vistos[ETAPAS[i].id]; }
+
+let abaAtual = 'inicio';
+function renderAbas(){
+  const nav = $('abas'); nav.innerHTML = '';
+  const todas = [{id:'inicio', nome:'Início', ic:'🏠'}].concat(ETAPAS);
+  todas.forEach(a=>{
+    const i = idxEtapa(a.id); const b = document.createElement('button');
+    b.innerHTML = `${a.ic} ${a.nome}`;
+    if(a.id===abaAtual) b.classList.add('ativa');
+    if(i>=0 && !aberta(i)){ b.classList.add('trancada'); b.innerHTML = `🔒 ${a.nome}`; b.title = faltaTexto(i); }
+    else if(i>=0 && feito(a.id)) b.innerHTML += ' <span class="selo">✅</span>';
+    else if(i>=0 && ehNova(i)) b.innerHTML += ' <span class="selo">✨ Novo</span>';
+    b.onclick = ()=>ir(a.id);
+    nav.appendChild(b);
+  });
+}
+function renderTrilha(){
+  const box = $('trilhaCards'); if(!box) return; box.innerHTML = '';
+  if(S.trilha.liberadoPelosPais){ const s=document.createElement('div'); s.className='caixa'; s.innerHTML='🔓 <b>Trilha liberada pelos pais</b> em '+dataBR(S.trilha.liberadoEm); box.appendChild(s); }
+  ETAPAS.forEach((e,i)=>{
+    const b = document.createElement('button'); b.className='etapa';
+    let status;
+    if(!aberta(i)){ b.classList.add('trancada'); status = `<span class="tag lock">🔒 Trancado</span><div class="sub">${faltaTexto(i)}</div>`; }
+    else if(feito(e.id)){ b.classList.add('feita'); status = `<span class="tag ok">✅ Concluído</span><div class="sub">em ${dataBR(S[e.id].concluidoEm)}</div>`; }
+    else if(ehNova(i)){ b.classList.add('nova'); status = `<span class="tag novo">✨ Novo destravado</span>`; }
+    else status = `<span class="sub">${i===0?'Comece por aqui!':'Aberto'}</span>`;
+    b.innerHTML = `<span class="ic">${e.ic}</span><span><b>${i+1}. ${e.nome}</b> ${status}</span>`;
+    b.onclick = ()=>ir(e.id);
+    box.appendChild(b);
+  });
+  renderAbas(); renderProximos();
+}
+function renderProximos(){
+  document.querySelectorAll('[data-proximo]').forEach(bt=>{
+    const i = idxEtapa(bt.dataset.proximo);
+    const ok = aberta(i);
+    bt.disabled = !ok;
+    if(!bt.dataset.rotulo) bt.dataset.rotulo = bt.textContent;
+    bt.textContent = ok ? bt.dataset.rotulo : '🔒 ' + bt.dataset.rotulo.replace(/^\S+\s/,'');
+    bt.title = ok ? '' : faltaTexto(i);
+    bt.onclick = ()=>ir(bt.dataset.proximo);
+  });
+}
+function modalTrancada(i){
+  abrirModal(`<div class="trofeu">🔒</div><h2>Esta etapa ainda está trancada</h2><p>Para abrir <b>${ETAPAS[i].nome}</b>, conclua antes <b>${ETAPAS[i-1].nome}</b>.</p><p>${faltaTexto(i)}</p>`,
+    [{t:'Ir para '+ETAPAS[i-1].nome, cls:'btn', fn:()=>ir(ETAPAS[i-1].id)},{t:'Voltar ao início', cls:'btn claro', fn:()=>ir('inicio')}]);
+}
+function ir(id){
+  const i = idxEtapa(id);
+  if(id!=='inicio' && i<0) id='inicio';
+  if(i>=0 && !aberta(i)){ modalTrancada(i); return; }
+  abaAtual = id;
+  document.querySelectorAll('section.aba').forEach(s=>s.classList.toggle('ativa', s.id==='sec-'+id));
+  if(i>=0 && !S.trilha.vistos[id]){ S.trilha.vistos[id] = new Date().toISOString(); gravar(K.trilha, S.trilha); }
+  renderTrilha();
+  window.scrollTo(0,0);
+  if(id==='resumo') setTimeout(medirRolagem, 300);
+}
+
+// ---------- LEITURA ----------
+const fechados = {};
+function opcoesDe(q, seed){ return embaralhar(q.o.map((o,k)=>Object.assign({k}, o)), seed); }
+function renderLeitura(){
+  const box = $('blocosLeitura'); box.innerHTML = '';
+  let anteriorFeito = true;
+  BLOCOS.forEach((b,j)=>{
+    if(j===0 || BLOCOS[j-1].ala!==b.ala){ const t=document.createElement('div'); t.className='ala-tit '+b.ala; t.innerHTML=ALAS[b.ala]; box.appendChild(t); }
+    const liberado = anteriorFeito; const completo = blocoFeito(b);
+    const d = document.createElement('div');
+    d.className = 'card bloco' + (liberado?'':' trancado') + (fechados[b.id]?' fechado':'');
+    d.style.setProperty('--c', b.cor); d.id = 'bloco-'+b.id;
+    let cab = `<div class="cab"><div><h2 style="color:${b.cor}">${b.emoji} ${j+1}. ${b.titulo}</h2><div class="sub">${b.tema} · ${b.pag}</div></div><div>${completo?'<span class="bilhete">🫧 bolha limpinha</span>':(liberado?'':'<span class="tag lock">🔒</span>')}</div></div>`;
+    if(!liberado){ d.innerHTML = cab + `<p class="sub">🔒 Abre quando você responder às 3 perguntas da bolha ${j}.</p>`; box.appendChild(d); anteriorFeito=false; return; }
+    let corpo = `<div class="corpo">${b.html}<div class="caixa">🔑 <b>Palavras importantes:</b> ${b.palavras.join(' · ')}</div><h3>🎯 Responda as 3 perguntas</h3>`;
+    b.qs.forEach((q,qi)=>{
+      const qid = b.id+'_'+qi; const r = S.leitura.resp[qid];
+      const ops = opcoesDe(q, hashStr(qid)+SEED_LEIT);
+      corpo += `<div class="pergunta"><b>${qi+1}) ${q.q}</b><div class="opcoes">`;
+      ops.forEach((o,pi)=>{
+        let cls = 'op';
+        if(r){ if(o.ok) cls+=' certa'; else if(o.k===r.esc) cls+=' errada'; else cls+=' cinza'; }
+        corpo += `<button class="${cls}" ${r?'disabled':''} data-q="${qid}" data-k="${o.k}">${LETRAS[pi]}) ${o.t}</button>`;
+      });
+      corpo += `</div>`;
+      if(r){ const esc = q.o[r.esc]; const certa = q.o.find(o=>o.ok);
+        corpo += r.ok ? `<div class="fb ok">🎉 ${esc.w}</div>` : `<div class="fb no">💭 Quase! ${esc.w}<br>✔️ <b>Resposta certa:</b> ${certa.t} — ${certa.w}</div>`; }
+      corpo += `</div>`;
+    });
+    corpo += `</div>`;
+    d.innerHTML = cab + corpo; box.appendChild(d);
+    d.querySelector('.cab').onclick = ()=>{ fechados[b.id] = !fechados[b.id]; d.classList.toggle('fechado'); };
+    anteriorFeito = completo;
+  });
+  box.querySelectorAll('button.op').forEach(bt=>bt.onclick = ()=>responderLeitura(bt.dataset.q, +bt.dataset.k));
+  const resp = Object.keys(S.leitura.resp).length; const acertos = Object.values(S.leitura.resp).filter(r=>r.ok).length;
+  $('barraLeitura').style.width = (resp/TOTAL_PERG*100)+'%';
+  $('txtLeitura').innerHTML = `${resp} de ${TOTAL_PERG} perguntas respondidas · ⭐ ${acertos} acertos · ${blocosFeitos()} de ${BLOCOS.length} bolhas`;
+  $('fimLeitura').style.display = S.leitura.concluido ? 'block' : 'none';
+}
+function responderLeitura(qid, k){
+  if(S.leitura.resp[qid]) return;
+  const [bid, qi] = qid.split('_'); const b = BLOCOS.find(x=>x.id===bid); const q = b.qs[+qi];
+  S.leitura.resp[qid] = {esc:k, ok:!!q.o[k].ok, em:new Date().toISOString()};
+  const fimAgora = !S.leitura.concluido && Object.keys(S.leitura.resp).length===TOTAL_PERG;
+  if(fimAgora) concluir('leitura');
+  salvar('leitura'); renderLeitura();
+  if(fimAgora) abrirModal('<div class="trofeu">🏆</div><h2>Leitura concluída!</h2><p>Você estourou todas as bolhas do Baño de Burbujas. O <b>Mapa Mental</b> foi destravado! ✨</p>', [{t:'🧠 Ir para o Mapa Mental', cls:'btn', fn:()=>ir('mapa')},{t:'Ficar aqui', cls:'btn claro'}]);
+}
+
+// ---------- MAPA MENTAL ----------
+function renderMapa(){
+  const box = $('ramosMapa'); box.innerHTML = '';
+  RAMOS.forEach(r=>{
+    const d = document.createElement('div'); d.className='ramo'; d.style.setProperty('--c', r.cor);
+    let h = `<h4>${r.nome}</h4>`;
+    r.nos.forEach(n=>{
+      if(typeof n==='string'){ h += `<div class="no">• ${n}</div>`; return; }
+      h += '<div class="no">• ' + n.map(p=>{
+        if(typeof p==='string') return p;
+        const st = S.mapa.pecas[p.id];
+        if(st && st.feita) return `<span class="lacuna feita"><span>${p.certa}</span></span>`;
+        const ops = embaralhar([p.certa, p.errada], hashStr(p.id)+SEED_MAPA);
+        return `<span class="lacuna">` + ops.map(o=>`<button data-p="${p.id}" data-v="${o}">${o}</button>`).join('<span style="align-self:center">ou</span>') + `</span>`;
+      }).join('') + '</div>';
+    });
+    d.innerHTML = h; box.appendChild(d);
+  });
+  box.querySelectorAll('.lacuna button').forEach(bt=>bt.onclick = ()=>encaixar(bt));
+  const f = pecasFeitas();
+  $('contadorMapa').textContent = f===TOTAL_PECAS ? '🧠 Mapa completo!' : `🧩 Mapa: ${f} de ${TOTAL_PECAS} peças encaixadas`;
+  $('mapa').classList.toggle('incompleto', f<TOTAL_PECAS);
+  $('mapa').classList.toggle('completo', f===TOTAL_PECAS);
+  $('mapaFim').style.display = f===TOTAL_PECAS ? 'block' : 'none';
+}
+function encaixar(bt){
+  const p = PECAS.find(x=>x.id===bt.dataset.p); const st = S.mapa.pecas[p.id] || {feita:false, tentou:false};
+  if(bt.dataset.v===p.certa){
+    st.feita = true; st.deprimeira = !st.tentou; st.em = new Date().toISOString(); S.mapa.pecas[p.id] = st;
+    const fimAgora = !S.mapa.concluido && pecasFeitas()===TOTAL_PECAS;
+    if(fimAgora) concluir('mapa');
+    salvar('mapa'); renderMapa();
+    if(fimAgora) abrirModal('<div class="trofeu">🧠</div><h2>Mapa completo!</h2><p>Você montou o mapa inteiro. O <b>Verdadeiro ou Falso</b> foi destravado! ✨</p>', [{t:'✅ Jogar Verdadeiro ou Falso', cls:'btn', fn:()=>ir('vf')},{t:'Ver o mapa', cls:'btn claro'}]);
+  } else {
+    st.tentou = true; S.mapa.pecas[p.id] = st; salvar('mapa');
+    bt.classList.remove('erro'); void bt.offsetWidth; bt.classList.add('erro');
+  }
+}
+
+// ---------- VERDADEIRO OU FALSO ----------
+let rodada = null;
+function novaRodada(){ const idx = embaralhar(VF.map((_,i)=>i), (Math.random()*1e9)>>>0).slice(0,12); rodada = {itens:idx, i:0, acertos:0, respondida:null}; renderVF(); }
+function estrelas(pct){ const n = Math.round(pct/20); return '⭐'.repeat(n) + '☆'.repeat(5-n); }
+function renderVF(){
+  const box = $('vfJogo');
+  if(!rodada){
+    box.innerHTML = `<h2>✅ Verdadeiro ou Falso: Verdade Limpinha? 🫧</h2><p>A Pompita vai mostrar <b>12 frases</b> sobre o capítulo 8. Para cada uma, diga se é <b>Verdadeira</b> ou <b>Falsa</b>. Depois de cada resposta aparece a explicação.</p>
+      ${S.vf.melhor!==null?`<p>🏅 Seu melhor placar: <b>${S.vf.melhor}%</b> ${estrelas(S.vf.melhor)} · rodadas jogadas: ${S.vf.rodadas}</p>`:''}
+      <div style="text-align:center"><button class="btn loco" id="btVfComecar">▶️ Começar rodada</button></div>`;
+    $('btVfComecar').onclick = novaRodada; return;
+  }
+  if(rodada.i >= rodada.itens.length){
+    const pct = Math.round(rodada.acertos/rodada.itens.length*100);
+    box.innerHTML = `<div class="placar-final"><div class="trofeu">🏆</div><h2>Rodada completa!</h2><p>Você acertou <b>${rodada.acertos} de ${rodada.itens.length}</b> — <b>${pct}%</b></p><p class="estrelas">${estrelas(pct)}</p><p>🏅 Melhor placar: ${S.vf.melhor}%</p>
+      <button class="btn azul" id="btVfDeNovo">🔁 Jogar de novo</button> <button class="btn loco" id="btVfResumo">🗺️ Agora revise no Resumo!</button></div>`;
+    $('btVfDeNovo').onclick = novaRodada; $('btVfResumo').onclick = ()=>ir('resumo'); return;
+  }
+  const it = VF[rodada.itens[rodada.i]];
+  let h = `<div class="sub">Frase ${rodada.i+1} de ${rodada.itens.length} · ✔️ ${rodada.acertos} acertos</div><div class="barra"><div style="width:${rodada.i/rodada.itens.length*100}%"></div></div>
+    <div class="vf-frase">"${it.f}"</div>`;
+  if(rodada.respondida===null){
+    h += `<div class="vf-bts"><button class="btn" id="btV">👍 Verdadeiro</button><button class="btn loco" id="btF">👎 Falso</button></div>`;
+    box.innerHTML = h; $('btV').onclick = ()=>responderVF(1); $('btF').onclick = ()=>responderVF(0);
+  } else {
+    const acertou = rodada.respondida===it.v;
+    h += `<div class="fb ${acertou?'ok':'no'}">${acertou?'🎉 Limpinho! Acertou!':'💭 Ops, ficou ensaboado... não foi dessa vez.'} ${it.e}${it.a?' <button class="som" data-fala="'+it.a+'">🔊</button>':''}</div><div style="text-align:center;margin-top:10px"><button class="btn azul" id="btVfProx">${rodada.i+1<rodada.itens.length?'➡️ Próxima frase':'🏁 Ver resultado'}</button></div>`;
+    box.innerHTML = h; $('btVfProx').onclick = ()=>{ rodada.i++; rodada.respondida=null; if(rodada.i>=rodada.itens.length) fimRodada(); renderVF(); };
+  }
+}
+function responderVF(v){ const it = VF[rodada.itens[rodada.i]]; rodada.respondida = v; if(v===it.v) rodada.acertos++; renderVF(); }
+function fimRodada(){
+  const pct = Math.round(rodada.acertos/rodada.itens.length*100);
+  S.vf.rodadas = (S.vf.rodadas||0)+1; S.vf.melhor = Math.max(S.vf.melhor||0, pct);
+  S.vf.historico = (S.vf.historico||[]).concat([{pct, em:new Date().toISOString()}]).slice(-20);
+  const primeira = !S.vf.concluido; concluir('vf'); salvar('vf');
+  if(primeira) setTimeout(()=>abrirModal('<div class="trofeu">🗺️</div><h2>Resumo destravado!</h2><p>Agora revise tudo no <b>Resumo</b> antes do Simulado.</p>', [{t:'🗺️ Ir para o Resumo', cls:'btn', fn:()=>ir('resumo')},{t:'Ficar aqui', cls:'btn claro'}]), 200);
+}
+
+// ---------- RESUMO ----------
+function renderResumo(){
+  $('gradeVocab').innerHTML = VOCAB.map(v=>W(v[0],v[1],v[2])).join('');
+  $('linhaTempo').innerHTML = LINHA.map(x=>`<div class="parada"><span class="ano">${x[0]} <button class="som" data-fala="${x[0]}">🔊</button></span><span class="ic">${x[1]}</span><div>${x[2]}</div></div>`).join('');
+  $('relampago').innerHTML = RELAMPAGO.map((r,i)=>`<button class="op" data-r="${i}">⚡ ${r[0]}</button><div class="resp-oculta" id="rel${i}">👉 ${r[1]}</div>`).join('');
+  document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{ const el=$('rel'+b.dataset.r); el.style.display = el.style.display==='block'?'none':'block'; });
+  atualizarBotaoResumo();
+}
+function medirRolagem(){
+  if(abaAtual!=='resumo') return;
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = h<=0 ? 100 : Math.min(100, Math.round(window.scrollY/h*100));
+  if(pct > (S.resumo.maxRolagem||0)){ S.resumo.maxRolagem = pct; salvar('resumo'); }
+  atualizarBotaoResumo();
+}
+function atualizarBotaoResumo(){
+  const bt = $('btLiResumo'); const pode = S.resumo.concluido || (S.resumo.maxRolagem||0) >= 90;
+  bt.disabled = !pode || S.resumo.concluido;
+  bt.textContent = S.resumo.concluido ? '✅ Resumo lido!' : '✅ Li o resumo até o fim';
+  $('txtLiResumo').textContent = S.resumo.concluido ? 'Concluído em '+dataBR(S.resumo.concluidoEm)+'. O Simulado está aberto!' : (pode ? 'Pode clicar!' : 'O botão acende quando você chegar ao fim da página.');
+}
+function liResumo(){
+  if(S.resumo.concluido) return;
+  concluir('resumo'); salvar('resumo'); atualizarBotaoResumo();
+  abrirModal('<div class="trofeu">📝</div><h2>Simulado destravado!</h2><p>Agora é hora de mostrar o que aprendeu. Boa sorte, jovem aprendiz!</p>', [{t:'📝 Ir para o Simulado', cls:'btn', fn:()=>ir('simulado')},{t:'Revisar mais um pouco', cls:'btn claro'}]);
+}
+
+// ---------- SIMULADO ----------
+function opsSim(qi){ const q = SIM[qi]; const base = q.o.map((o,k)=>({k, t:o[0], ok:o.length===3, w:o.length===3?o[2]:o[1]})); return embaralhar(base, hashStr('sim'+qi)+SEED_SIM); }
+function renderSimulado(){
+  const box = $('questoesSim'); box.innerHTML = '';
+  SIM.forEach((q,qi)=>{
+    const d = document.createElement('div'); d.className = 'card';
+    const r = S.simulado.resp[qi];
+    let h = `<b>Questão ${qi+1}.</b> ${q.q}<div class="opcoes" style="margin-top:8px">`;
+    opsSim(qi).forEach((o,pi)=>{
+      let cls='op'; if(r===o.k) cls+=' sel';
+      if(S.simulado.enviado){ cls='op'+(o.ok?' certa':(r===o.k?' errada':' cinza')); }
+      h += `<button class="${cls}" ${S.simulado.enviado?'disabled':''} data-sq="${qi}" data-k="${o.k}">${LETRAS[pi]}) ${o.t}</button>`;
+    });
+    d.innerHTML = h + '</div>'; box.appendChild(d);
+  });
+  if(!S.simulado.enviado) box.querySelectorAll('[data-sq]').forEach(b=>b.onclick=()=>{ S.simulado.resp[b.dataset.sq] = +b.dataset.k; salvar('simulado'); renderSimulado(); });
+  const n = Object.keys(S.simulado.resp).length;
+  $('barraSim').style.width = (n/SIM.length*100)+'%';
+  $('txtSim').textContent = S.simulado.enviado ? `Enviado em ${dataBR(S.simulado.enviadoEm)}` : `${n} de ${SIM.length} respondidas`;
+  $('envioSim').style.display = S.simulado.enviado ? 'none' : 'block';
+  renderResultado();
+}
+function gerarCodigo(ac){ const L='ABCDEFGHJKLMNPQRSTUVWXYZ'; const r=()=>L[Math.floor(Math.random()*L.length)]; return `SIM-${String(ac).padStart(2,'0')}-${r()}${r()}`; }
+function enviarSim(){
+  const falta = SIM.map((_,i)=>i).filter(i=>S.simulado.resp[i]===undefined);
+  if(falta.length){ abrirModal(`<div class="trofeu">✏️</div><h2>Ainda faltam ${falta.length} questões</h2><p>Responda as questões: <b>${falta.map(i=>i+1).join(', ')}</b>.</p>`); return; }
+  abrirModal('<h2>Enviar o Simulado?</h2><p>Depois de enviar, não dá para mudar as respostas.</p>', [{t:'📨 Enviar', cls:'btn loco', fn:confirmarEnvio},{t:'Revisar antes', cls:'btn claro'}]);
+}
+function confirmarEnvio(){
+  let ac = 0; SIM.forEach((q,qi)=>{ if(q.o[S.simulado.resp[qi]].length===3) ac++; });
+  S.simulado.acertos = ac; S.simulado.enviado = true; S.simulado.enviadoEm = new Date().toISOString();
+  if(!S.simulado.codigo) S.simulado.codigo = gerarCodigo(ac);
+  concluir('simulado'); salvar('simulado'); renderSimulado();
+  setTimeout(()=>{ const el=$('resultadoSim'); if(el) el.scrollIntoView({behavior:'smooth'}); }, 100);
+}
+function renderResultado(){
+  const box = $('resultadoSim');
+  if(!S.simulado.enviado){ box.innerHTML=''; return; }
+  const ac = S.simulado.acertos; const pct = Math.round(ac/SIM.length*100);
+  let h = `<div class="card placar-final"><div class="trofeu">${pct>=70?'🏆':'💪'}</div><h2>Você acertou ${ac} de ${SIM.length} (${pct}%)</h2><p class="estrelas">${estrelas(pct)}</p>
+    <p>${pct>=70?'Mandou muito bem!':'Continue treinando: releia o Resumo e confira o gabarito abaixo.'}</p>
+    <p>Seu código para os pais: <b style="font-size:1.3em;color:var(--pau2)">${S.simulado.codigo}</b></p></div>
+    <div class="card"><h2>📗 Gabarito comentado</h2><p class="sub">A certa aparece em verde. As outras aparecem em cinza, com a explicação do erro. A sua resposta tem contorno azul. Aperte 🔊 para ouvir a resposta em espanhol.</p>`;
+  SIM.forEach((q,qi)=>{
+    const r = S.simulado.resp[qi]; const ops = opsSim(qi); const acertou = q.o[r].length===3;
+    h += `<div class="gab-q"><b>${acertou?'✅':'❌'} Questão ${qi+1}.</b> ${q.q}${q.a?` <button class="som" data-fala="${q.a}" title="ouvir a resposta">🔊</button>`:''}`;
+    ops.forEach((o,pi)=>{ h += `<div class="gab-op ${o.ok?'certa':'cinza'} ${r===o.k?'marcada':''}">${o.ok?'✔️':'✖️'} <b>${LETRAS[pi]}) ${o.t}</b>${r===o.k?' <i>(sua resposta)</i>':''}<br><span>${o.w}</span></div>`; });
+    if(q.d) h += `<div class="sub">💡 <b>Dica:</b> ${q.d}</div>`;
+    h += `</div>`;
+  });
+  h += `<p style="text-align:center"><a class="btn azul" href="gabarito.html" target="_blank" style="text-decoration:none;display:inline-block">📄 Abrir o gabarito para imprimir</a></p>`;
+  box.innerHTML = h + '</div>';
+}
+
+// ---------- PAINEL / RELATÓRIO / EXPORTAR ----------
+function atualizarPainel(){
+  const datas = ['leitura','mapa','vf','resumo','simulado'].map(n=>S[n]&&S[n].salvoEm).filter(Boolean).sort();
+  const el = $('painelSalvar'); if(el) el.textContent = datas.length ? `Progresso salvo neste aparelho. Último salvamento: ${dataBR(datas[datas.length-1])}` : 'Seu progresso é salvo sozinho neste aparelho.';
+}
+function abrirRelatorio(){
+  const cod = $('codPais').value.trim().toUpperCase(); const area = $('areaPais');
+  const ehPais = cod===CODIGO_PAIS; const ehSim = S.simulado.codigo && cod===S.simulado.codigo;
+  if(!ehPais && !ehSim){ area.innerHTML = '<p class="fb no">Código não reconhecido. Use o código do Simulado (SIM-…) ou o código da família.</p>'; return; }
+  const resp = Object.values(S.leitura.resp); const lAc = resp.filter(r=>r.ok).length;
+  const errLeit = []; BLOCOS.forEach(b=>b.qs.forEach((q,qi)=>{ const r=S.leitura.resp[b.id+'_'+qi]; if(r && !r.ok) errLeit.push(b.titulo+' – '+q.q.replace(/<svg[\s\S]*?<\/svg>/g,'')); }));
+  const pecasPrim = PECAS.filter(p=>S.mapa.pecas[p.id] && S.mapa.pecas[p.id].feita && S.mapa.pecas[p.id].deprimeira).length;
+  const errSim = S.simulado.enviado ? SIM.map((q,qi)=>q.o[S.simulado.resp[qi]].length===3?null:qi+1).filter(Boolean) : [];
+  let h = `<table class="rel"><tr><th>Material</th><th>Resultado</th></tr>
+   <tr><td>📖 Leitura Guiada</td><td>${resp.length} de ${TOTAL_PERG} respondidas · ${lAc} acertos de primeira${errLeit.length?'<br><span class="sub">Errou: '+errLeit.join('; ')+'</span>':''}</td></tr>
+   <tr><td>🧠 Mapa Mental</td><td>${pecasFeitas()} de ${TOTAL_PECAS} peças encaixadas · <b>Mapa Mental: ${pecasPrim} de ${TOTAL_PECAS} peças encaixadas de primeira</b></td></tr>
+   <tr><td>✅ Verdadeiro ou Falso</td><td>${S.vf.melhor!==null?'Melhor placar: '+S.vf.melhor+'% · rodadas: '+S.vf.rodadas:'Ainda não jogou'}</td></tr>
+   <tr><td>🗺️ Resumo</td><td>Rolagem máxima: ${S.resumo.maxRolagem||0}% · ${S.resumo.concluido?'marcou "li até o fim"':'não marcou "li até o fim"'}</td></tr>
+   <tr><td>📝 Simulado</td><td>${S.simulado.enviado?`${S.simulado.acertos} de ${SIM.length} (${Math.round(S.simulado.acertos/SIM.length*100)}%) · código ${S.simulado.codigo}${errSim.length?'<br><span class="sub">Errou as questões: '+errSim.join(', ')+'</span>':''}`:'Ainda não enviado'}</td></tr>
+   <tr><td>🛤️ Trilha</td><td>${ETAPAS.map(e=>`${e.ic} ${e.nome}: ${feito(e.id)?'✅ concluída em '+dataBR(S[e.id].concluidoEm):'⏳ não concluída'}`).join('<br>')}
+     <br>${S.trilha.liberadoPelosPais?'🔓 Trilha liberada pelos pais em '+dataBR(S.trilha.liberadoEm):'🔒 Trilha não liberada pelos pais'}
+     ${S.trilha.historico.length?'<br><span class="sub">Histórico: '+S.trilha.historico.map(x=>x.acao+' em '+dataBR(x.em)).join('; ')+'</span>':''}</td></tr></table>`;
+  if(ehPais){
+    h += S.trilha.liberadoPelosPais
+      ? `<p class="caixa">🔓 <b>Trilha liberada pelos pais</b></p><button class="btn claro" id="btTrancar">🔒 Trancar de novo</button>`
+      : `<button class="btn azul" id="btLiberar">🔓 Liberar todos os materiais</button>`;
+  }
+  h += `<p><a href="gabarito.html" target="_blank">📄 Gabarito comentado do Simulado (arquivo separado)</a></p>`;
+  area.innerHTML = h;
+  if($('btLiberar')) $('btLiberar').onclick = ()=>{ S.trilha.liberadoPelosPais=true; S.trilha.liberadoEm=new Date().toISOString(); S.trilha.historico.push({acao:'liberou', em:S.trilha.liberadoEm}); gravar(K.trilha,S.trilha); renderTrilha(); abrirRelatorio(); };
+  if($('btTrancar')) $('btTrancar').onclick = ()=>{ S.trilha.liberadoPelosPais=false; S.trilha.historico.push({acao:'trancou de novo', em:new Date().toISOString()}); gravar(K.trilha,S.trilha); renderTrilha(); abrirRelatorio(); };
+}
+function exportar(){
+  const dados = {kit:SLUG, titulo:'Baño de Burbujas — Espanhol 3º ano (Cap. 8)', exportadoEm:new Date().toISOString(), leitura:S.leitura, mapa:S.mapa, vf:S.vf, resumo:S.resumo, simulado:S.simulado, trilha:S.trilha};
+  const blob = new Blob([JSON.stringify(dados,null,2)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'progresso_bano_de_burbujas.json'; document.body.appendChild(a); a.click(); a.remove();
+}
+function importar(arq){
+  const fr = new FileReader();
+  fr.onload = ()=>{ try{ const d = JSON.parse(fr.result); if(d.kit!==SLUG) throw 0;
+      ['leitura','mapa','vf','resumo','simulado','trilha'].forEach(n=>{ if(d[n]) gravar(K[n], d[n]); });
+      carregar(); renderTudo(); abrirModal('<h2>📤 Progresso importado!</h2>');
+    }catch(e){ abrirModal('<h2>Arquivo não reconhecido</h2><p>Escolha o arquivo exportado deste kit.</p>'); } };
+  fr.readAsText(arq);
+}
+function zerarTudo(){
+  abrirModal('<h2>🗑️ Zerar tudo?</h2><p>Todo o progresso deste kit será apagado neste aparelho.</p>', [{t:'Sim, zerar', cls:'btn loco', fn:()=>{ Object.values(K).forEach(apagar); carregar(); rodada=null; renderTudo(); ir('inicio'); }},{t:'Cancelar', cls:'btn claro'}]);
+}
+
+function renderTudo(){ renderLeitura(); renderMapa(); renderVF(); renderResumo(); renderSimulado(); atualizarPainel(); renderTrilha(); }
+function iniciar(){
+  carregar(); renderTudo();
+  document.addEventListener('click', e=>{ const b = e.target.closest('[data-fala]'); if(b){ e.preventDefault(); falar(b.dataset.fala); } });
+  $('btExportar').onclick = exportar; $('btImportar').onclick = ()=>$('arqImportar').click();
+  $('arqImportar').onchange = e=>{ if(e.target.files[0]) importar(e.target.files[0]); e.target.value=''; };
+  $('btZerar').onclick = zerarTudo; $('btRelatorio').onclick = abrirRelatorio;
+  $('codPais').addEventListener('keydown', e=>{ if(e.key==='Enter') abrirRelatorio(); });
+  $('btLiResumo').onclick = liResumo; $('btEnviarSim').onclick = enviarSim;
+  window.addEventListener('scroll', ()=>{ if(abaAtual==='resumo') medirRolagem(); }, {passive:true});
+  window.addEventListener('hashchange', ()=>{ const h = location.hash.replace('#',''); if(h) ir(h); });
+  const h0 = location.hash.replace('#',''); ir(h0 || 'inicio');
+}
+iniciar();
+</script>
+</body>
+</html>
